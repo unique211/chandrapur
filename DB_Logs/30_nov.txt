@@ -1,0 +1,23 @@
+ALTER TABLE property_transfer_record ADD record_status TINYINT(1) NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE inheritance_certificate ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE fire_fighting_noc ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE occuption_certificate ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE part_certificate ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE zone_certificate ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE construction_certificate ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE plant_certificate ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE fire_fighting2 ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE outstanding_certificate ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE noc_certificate ADD record_status INT NOT NULL DEFAULT '1' AFTER status;
+
+ALTER TABLE resident_certificate ADD record_status INT NOT NULL DEFAULT '1' AFTER status;

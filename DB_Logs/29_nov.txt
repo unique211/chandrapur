@@ -1,0 +1,3 @@
+ALTER TABLE death_registration ADD user_id VARCHAR(50) NULL AFTER remarks;
+
+ALTER TABLE birth_registration ADD user_id VARCHAR(50) NULL AFTER date_of_issue;

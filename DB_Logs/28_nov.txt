@@ -1,0 +1,9 @@
+New DB added and merge 3 sql files in 28 nov folder
+
+
+chandrapur_1 : old database
+chandrapur_2 : for website setting
+chandrapur_3 : 3 tables(online payment,menu_master,fee_structure)
+
+
+ALTER TABLE department_master ADD code VARCHAR(10) NULL AFTER status;

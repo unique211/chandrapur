@@ -1,0 +1,10 @@
+[16-Jun-2019 05:36:19 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 68
+[16-Jun-2019 05:36:25 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 68
+[16-Jun-2019 05:37:15 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 68
+[16-Jun-2019 05:39:42 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 68
+[16-Jun-2019 05:40:15 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 68
+[16-Jun-2019 05:41:03 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 68
+[16-Jun-2019 05:43:10 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 68
+[16-Jun-2019 05:47:19 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 68
+[16-Jun-2019 05:48:13 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 68
+[16-Jun-2019 05:50:21 UTC] PHP Fatal error:  Call to undefined method CashCounter_model::get() in /home/uniqueit211/public_html/allysoftsolutions.com/chandrapur/application/models/CashCounter_model.php on line 65
