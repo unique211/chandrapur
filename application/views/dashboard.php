@@ -29,7 +29,7 @@
             body {
                 padding-top: 0;
                 font-size: 12px;
-                color: #777;
+                color: #111927;
                 background: #f9f9f9;
                 font-family: "Open Sans", sans-serif;
             }
@@ -277,11 +277,11 @@
 
 						$out_today_amt = floatval($data['out_today_amt']) * floatval(100) / floatval($all_over_today_income);
 
-		// if ($data['noc_today_cnt'] == 0) {
-		// 	$noc_today_cnt = 1;
-		// }
+						// if ($data['noc_today_cnt'] == 0) {
+						// 	$noc_today_cnt = 1;
+						// }
 
-		$noc_today_amt = floatval($data['noc_today_amt']) * floatval(100) / floatval($all_over_today_income);
+						$noc_today_amt = floatval($data['noc_today_amt']) * floatval(100) / floatval($all_over_today_income);
 
 						// if ($data['res_today_cnt'] == 0) {
 						// 	$res_today_cnt = 1;
@@ -377,136 +377,157 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
 
-                            <table id="table1" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Sr No.</th>
-                                        <th>Department</th>
-                                        <th>Register Count</th>
-                                        <th>Income Count</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Property Transfer Record</td>
-                                        <td><?php echo $data['property_today_cnt']; ?>/<?php echo $data['property_overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['pro_today_amt']; ?>/<?php echo $data['pro_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Inheritance Certificate</td>
-                                        <td><?php echo $data['inher_today_cnt']; ?>/<?php echo $data['inher__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['inh_today_amt']; ?>/<?php echo $data['inh_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Fire Fighting Final No Objection Certificate</td>
-                                        <td><?php echo $data['ffn_today_cnt']; ?>/<?php echo $data['ffn__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['ffn_today_amt']; ?>/<?php echo $data['ffn_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Occupation Certificate</td>
-                                        <td><?php echo $data['occ_today_cnt']; ?>/<?php echo $data['occ__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['occ_today_amt']; ?>/<?php echo $data['occ_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>Part Certificate</td>
-                                        <td><?php echo $data['part_today_cnt']; ?>/<?php echo $data['part__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['part_today_amt']; ?>/<?php echo $data['part_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Zone Certificate</td>
-                                        <td><?php echo $data['zone_today_cnt']; ?>/<?php echo $data['zone__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['zone_today_amt']; ?>/<?php echo $data['zone_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Construction Certificate</td>
-                                        <td><?php echo $data['construction_today_cnt']; ?>/<?php echo $data['construction__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['const_today_amt']; ?>/<?php echo $data['const_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>Plant Certificate</td>
-                                        <td><?php echo $data['plant_today_cnt']; ?>/<?php echo $data['plant__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['plant_today_amt']; ?>/<?php echo $data['plant_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td>Fire Fighting</td>
-                                        <td><?php echo $data['ff_today_cnt']; ?>/<?php echo $data['ff__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['ff_today_amt']; ?>/<?php echo $data['ff_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>Outstanding Certificate</td>
-                                        <td><?php echo $data['outstanding_today_cnt']; ?>/<?php echo $data['outstanding__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['out_today_amt']; ?>/<?php echo $data['out_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>11</td>
-                                        <td>No Objection Certificate</td>
-                                        <td><?php echo $data['noc_today_cnt']; ?>/<?php echo $data['noc__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['noc_today_amt']; ?>/<?php echo $data['noc_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>12</td>
-                                        <td>Resident Certificate</td>
-                                        <td><?php echo $data['res_today_cnt']; ?>/<?php echo $data['res__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['res_today_amt']; ?>/<?php echo $data['res_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>13</td>
-                                        <td>Asset Detail Certificate</td>
-                                        <td>0/0 </td>
-                                        <td>0/0 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>14</td>
-                                        <td>Birth And Death</td>
-                                        <td><?php echo $data['birth_today_cnt']; ?>/<?php echo $data['birth__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['birth_today_amt']; ?>/<?php echo $data['birth_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>15</td>
-                                        <td>Marriage Registration Department</td>
-                                        <td><?php echo $data['marr_today_cnt']; ?>/<?php echo $data['marr__overall_cnt']; ?>
-                                        </td>
-                                        <td><?php echo $data['marr_today_amt']; ?>/<?php echo $data['marr_overall_amt']; ?>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                            <div class=" panel panel-default">
+                                <div class="panel-heading">
+
+                                    <h3 class="panel-title">Department Wise Details</h3>
+
+                                    <ul class="panel-controls">
+                                        <li>
+                                            <!--<button class="btn btn-success btnhideshow"
+                              style="background-color:#00B050;"> Add </button></li> -->
+                                    </ul>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-lg-12 ">
+                                        <div class="table-responsive">
+                                            <table id="table1" class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr No.</th>
+                                                        <th>Department</th>
+                                                        <th>Register Count</th>
+                                                        <th>Income Count</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Property Transfer Record</td>
+                                                        <td><?php echo $data['property_today_cnt']; ?>/<?php echo $data['property_overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['pro_today_amt']; ?>/<?php echo $data['pro_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Inheritance Certificate</td>
+                                                        <td><?php echo $data['inher_today_cnt']; ?>/<?php echo $data['inher__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['inh_today_amt']; ?>/<?php echo $data['inh_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Fire Fighting Final No Objection Certificate</td>
+                                                        <td><?php echo $data['ffn_today_cnt']; ?>/<?php echo $data['ffn__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['ffn_today_amt']; ?>/<?php echo $data['ffn_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>Occupation Certificate</td>
+                                                        <td><?php echo $data['occ_today_cnt']; ?>/<?php echo $data['occ__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['occ_today_amt']; ?>/<?php echo $data['occ_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>Part Certificate</td>
+                                                        <td><?php echo $data['part_today_cnt']; ?>/<?php echo $data['part__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['part_today_amt']; ?>/<?php echo $data['part_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td>Zone Certificate</td>
+                                                        <td><?php echo $data['zone_today_cnt']; ?>/<?php echo $data['zone__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['zone_today_amt']; ?>/<?php echo $data['zone_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td>Construction Certificate</td>
+                                                        <td><?php echo $data['construction_today_cnt']; ?>/<?php echo $data['construction__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['const_today_amt']; ?>/<?php echo $data['const_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>8</td>
+                                                        <td>Plant Certificate</td>
+                                                        <td><?php echo $data['plant_today_cnt']; ?>/<?php echo $data['plant__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['plant_today_amt']; ?>/<?php echo $data['plant_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>9</td>
+                                                        <td>Fire Fighting</td>
+                                                        <td><?php echo $data['ff_today_cnt']; ?>/<?php echo $data['ff__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['ff_today_amt']; ?>/<?php echo $data['ff_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10</td>
+                                                        <td>Outstanding Certificate</td>
+                                                        <td><?php echo $data['outstanding_today_cnt']; ?>/<?php echo $data['outstanding__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['out_today_amt']; ?>/<?php echo $data['out_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11</td>
+                                                        <td>No Objection Certificate</td>
+                                                        <td><?php echo $data['noc_today_cnt']; ?>/<?php echo $data['noc__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['noc_today_amt']; ?>/<?php echo $data['noc_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>12</td>
+                                                        <td>Resident Certificate</td>
+                                                        <td><?php echo $data['res_today_cnt']; ?>/<?php echo $data['res__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['res_today_amt']; ?>/<?php echo $data['res_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13</td>
+                                                        <td>Asset Detail Certificate</td>
+                                                        <td>0/0 </td>
+                                                        <td>0/0 </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>14</td>
+                                                        <td>Birth And Death</td>
+                                                        <td><?php echo $data['birth_today_cnt']; ?>/<?php echo $data['birth__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['birth_today_amt']; ?>/<?php echo $data['birth_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>15</td>
+                                                        <td>Marriage Registration Department</td>
+                                                        <td><?php echo $data['marr_today_cnt']; ?>/<?php echo $data['marr__overall_cnt']; ?>
+                                                        </td>
+                                                        <td><?php echo $data['marr_today_amt']; ?>/<?php echo $data['marr_overall_amt']; ?>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
 
 
@@ -690,7 +711,7 @@
                     dataPoints: [{
                             y: pro_today_amt_per,
                             name: "Property Transfer Record"
-                         
+
                         },
                         {
                             y: inh_today_amt_per,
@@ -766,7 +787,10 @@
                 e.chart2.render();
 
             }
-            $("#table1").dataTable();
+            $("#table1").dataTable({
+   searching: false,
+                        "lengthChange": false
+			});
         });
         </script>
 
