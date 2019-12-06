@@ -38,7 +38,7 @@
                                     style="box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 0) !important">
                                     <div class="panel-body">
                                         <h2>Login</h2>
-                                        <p>Please fill in your basic personal information in the folowing fields:</p>
+                                        <p>Please fill in your basic personal information in the following fields:</p>
                                         <form id="loginform" name="loginform" class="form-signin">
                                             <div class="form-group">
                                                 <label>User Id / Mobile Number</label>
@@ -118,8 +118,8 @@
 
 
         position: relative;
-        
-min-height: 1px;
+
+        min-height: 1px;
         padding-right: 8px;
         padding-left: 30px;
 
