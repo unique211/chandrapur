@@ -42,14 +42,14 @@
 								} ?>"><a href="<?php echo base_url() ?>Welcome/dashboard"><span class="fa fa-tachometer"></span> <span
                     class="xn-text">Dashboard</span></a>
         </li>
-
+ 
 
 
         <?php
 		if ($this->session->role == 'admin') {
 			?>
 
-
+<li class="<?php if($active_menu=='import'){	echo 'x-active-nav';	} ?>"><a href="<?php echo base_url() ?>Welcome/import"><span class="fa fa-file-excel-o"></span> <span class="xn-text">Import Birth Data</span></a></li>
 
         <li class="<?php if ($active_menu == 'addadm') {
 											echo 'x-active-nav';
