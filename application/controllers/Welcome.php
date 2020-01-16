@@ -45,6 +45,7 @@ class Welcome extends CI_Controller
 			redirect(base_url());
 		}
 	}
+
 	public function dashboard1()
 	{
 
@@ -57,6 +58,18 @@ class Welcome extends CI_Controller
 		} else {
 			redirect(base_url());
 		}
+	}
+	public function import()
+	{
+		if (isset($this->session->userid)) {
+
+			$title['active_menu'] = "import";
+			$this->load->view('import', $title);
+		} else {
+			redirect(base_url());
+		}
+	
+	
 	}
 	public function property_record()
 	{
