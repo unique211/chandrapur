@@ -1032,10 +1032,10 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2" class="tbl_data address_at_deceased_m"
+                                                            <td  class="tbl_data address_at_deceased_m"
                                                                 id="address_at_deceased_m">
                                                             </td>
-                                                            <td colspan="2"
+                                                            <td 
                                                                 class="tbl_data parmanent_address_deceased_m"
                                                                 id="parmanent_address_deceased_m">
                                                             </td>
@@ -1044,40 +1044,39 @@
                                                             <td colspan="4">&nbsp;</td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2" class="tbl_data">
+                                                            <td  class="tbl_data">
                                                                 <font style="vertical-align: inherit;">
                                                                     <font style="vertical-align: inherit;">
                                                                         Address of Deceased at the time of death:</font>
                                                                 </font>
                                                             </td>
-                                                            <td colspan="2" class="tbl_data">
+															<td  class="tbl_data address_at_deceased"
+                                                                id="address_at_deceased">
+                                                            </td>
+                                                            <td  class="tbl_data">
                                                                 <font style="vertical-align: inherit;">
                                                                     <font style="vertical-align: inherit;">
                                                                         Permanent address of Deceased:
                                                                     </font>
                                                                 </font>
                                                             </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="2" class="tbl_data address_at_deceased"
-                                                                id="address_at_deceased">
-                                                            </td>
-                                                            <td colspan="2" class="tbl_data parmanent_address_deceased"
+															<td  class="tbl_data parmanent_address_deceased"
                                                                 id="parmanent_address_deceased">
                                                             </td>
                                                         </tr>
+                                                        
                                                         <tr>
                                                             <td colspan="4">&nbsp;</td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2" class="tbl_data">
+                                                            <td  class="tbl_data">
                                                                 <font style="vertical-align: inherit;">
                                                                     <font style="vertical-align: inherit;">
                                                                         शेरा / Remark:
                                                                     </font>
                                                                 </font>
                                                             </td>
-                                                            <td colspan="2" class="tbl_data remarks" id="remarks">&nbsp;
+                                                            <td  class="tbl_data remarks" id="remarks">&nbsp;
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -1085,7 +1084,7 @@
                                                         </tr>
 
                                                         <tr>
-                                                            <td colspan="2" class="tbl_data">
+                                                            <td  class="tbl_data">
                                                                 <font style="vertical-align: inherit;">
                                                                     <font style="vertical-align: inherit;">
                                                                         प्रमाणपत्र दिल्याचा दिनांक:</font>
@@ -1098,7 +1097,7 @@
                                                             <td>&nbsp;</td>
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="2" class="tbl_data">
+                                                            <td  class="tbl_data">
                                                                 <font style="vertical-align: inherit;">
                                                                     <font style="vertical-align: inherit;">
                                                                         Date of Issue of Registration

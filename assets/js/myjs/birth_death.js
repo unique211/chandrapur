@@ -837,7 +837,7 @@ $(document).ready(function() {
         $('.reg_date').html('');
         // $('.remarks_m').html();
         $('.remarks').html('');
-        $('.date_of_issue').html('');
+        //  $('.date_of_issue').html('');
 
         table_name = "birth_registration";
         var id = $(this).attr('id');
@@ -882,7 +882,7 @@ $(document).ready(function() {
                     $('.reg_date').html(reg_date1);
                     // $('.remarks_m').html(data[i].remarks_m);
                     $('.remarks').html(data[i].remarks);
-                    $('.date_of_issue').html(date_of_issue1);
+                    //  $('.date_of_issue').html(date_of_issue1);
                 }
             }
         });
@@ -943,6 +943,41 @@ $(document).ready(function() {
         $('.formhideshow').show();
         $("#form5").show();
         $(".btnhideshow").show();
+
+        var id = $(this).attr('id');
+
+        $.ajax({
+            type: "POST",
+            url: baseurl + "Birth/showdatawhere_register",
+            data: {
+                table_name: 'birth_registration',
+                id: id,
+            },
+            dataType: "JSON",
+            async: false,
+            success: function(data) {
+                var data = eval(data);
+                $('#ac_reg_no_m').html(data[0].reg_no);
+                $('#ac_reg_date_m').html(data[0].reg_date);
+                $('#ac_child_name_m').html(data[0].child_name_m);
+                $('#ac_child_name').html(data[0].child_name);
+                $('#ac_gender_m').html(data[0].gender_m);
+                $('#ac_gender').html(data[0].gender);
+                $('#ac_dob_m').html(data[0].dob);
+                $('#ac_placeofbirth_m').html(data[0].birth_place_m);
+                $('#ac_placeofbirth').html(data[0].birth_place);
+                $('#ac_mother_name_m').html(data[0].mother_name_m);
+                $('#ac_mother_name').html(data[0].mother_name);
+                $('#ac_father_name_m').html(data[0].father_name_m);
+                $('#ac_father_name').html(data[0].father_name);
+                $('#ac_parent_addresss_at_birth_m').html(data[0].parent_addresss_at_birth_m);
+                $('#ac_parent_addresss_at_birth').html(data[0].parent_addresss_at_birth);
+                $('#ac_parent_perminent_address_m').html(data[0].parent_perminent_address_m);
+                $('#ac_parent_perminent_address').html(data[0].parent_perminent_address);
+                $('#ac_reg_no2').html(data[0].reg_no);
+                $('#ac_remarks').html(data[0].remarks);
+            }
+        });
     });
     //-----------------------acknowledgment code end-------------------------------------
     //----------------------submit form3 code start------------------------------

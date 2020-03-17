@@ -3155,11 +3155,13 @@
                                                 <td style="width:20%;margin-top: -1%;padding-left: 2%;">
                                                     <table style="width:100%;">
                                                         <tbody>
+														
+
                                                             <tr style="margin-bottom: 5%;">
                                                                 <td>
                                                                     <center>
-                                                                        <img src="<?php echo base_url(); ?>images/satya.jpg"
-                                                                            style="float: left;padding-left: 20%;width: 30%;height:75px;">
+                                                                        <img src="<?php echo base_url(); ?>images/logo_new.png"
+                                                                            style="float: left;padding-left: 20%;width: 100%;height:130px;">
                                                                     </center>
                                                                 </td>
                                                             </tr>
@@ -3187,6 +3189,14 @@
                                                     <center>
                                                         <table>
                                                             <tbody>
+															<tr style="text-align: center;">
+                                                                <td>
+                                                                    <center>
+                                                                        <img src="<?php echo base_url(); ?>images/satya.jpg"
+                                                                            style="width: 30%;height:75px;">
+                                                                    </center>
+                                                                </td>
+                                                            </tr>
                                                                 <tr>
                                                                     <td>
                                                                         <center><b style="font-size: 19px;">महाराष्ट्र
@@ -3251,13 +3261,13 @@
                                                 <td style="width:20%;margin-top: -1%;padding-right: 1%;">
                                                     <table style="width:100%;">
                                                         <tbody>
-                                                            <tr style="margin-bottom: 5%;">
-                                                                <!-- <td>
-                                                                                     <center>
-                                                                                          <img src="<?php echo base_url(); ?>images/cmc.jpg" style="float: left;padding-left: 1%;width: 65%;height:95px;">
-                                                                                     </center>
-                                                                                </td> -->
-                                                                <td>&nbsp;</td>
+														<tr style="margin-bottom: 5%;">
+                                                                <td >
+                                                                    <center>
+                                                                        <img src="<?php echo base_url(); ?>images/cmc.jpg"
+                                                                            style="float: left;padding-left: 20%;width: 70%;height:50%;margin-top: 17px;">
+                                                                    </center>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>&nbsp;</td>
@@ -3270,7 +3280,7 @@
                                                                             style="float: left;padding-left: 1%;width: 65%;height:95px;border: 1px solid;">
 
                                                                         <div
-                                                                            style="width: 49%;font-size: 14px;margin-left: -55px;margin-top:50%">
+                                                                            style="width: 45%;font-size: 14px;margin-left: -55px;">
                                                                             <br> पत्नीचा फोटो <br>
                                                                             Wife's Photo
                                                                         </div>
@@ -3418,8 +3428,7 @@
                                                     <center><b><label class="mr_receipt"></label></b></center>
                                                 </td>
                                                 <td style="text-align:center;"><label class='modify_date'></label></td>
-                                                <td style="text-align:right;padding-right: 9%;">चंद्रपूर शहर
-                                                    महानगरपालिका</td>
+                                                <td style="padding-right: 1%;text-align:center;vertical-align: bottom;font-size:10px;">चंद्रपूर शहर महानगरपालिका, चंद्रपूर </td>
                                             </tr>
                                             <!-- <tr><td colspan="3">&nbsp;</td></tr> -->
                                         </tbody>
