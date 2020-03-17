@@ -25,7 +25,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 //$config['base_url'] = 'https://chandrpur.herokuapp.com/';
 //$config['base_url'] = 'http://allysoftsolutions.com/chandrapur/';
-$config['base_url'] = 'http://localhost/chandrapur/';
+$config['base_url'] = 'http://192.168.2.108/chandrapur/';
 /*
 |--------------------------------------------------------------------------
 | Index File

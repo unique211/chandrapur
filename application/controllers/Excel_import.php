@@ -13,117 +13,6 @@ class Excel_import extends CI_Controller
 	}
 
 
-
-	function import()
-	{
-		if (isset($_FILES["file"]["name"])) {
-			$path = $_FILES["file"]["tmp_name"];
-			$object = PHPExcel_IOFactory::load($path);
-			foreach ($object->getWorksheetIterator() as $worksheet) {
-				$highestRow = $worksheet->getHighestRow();
-				$highestColumn = $worksheet->getHighestColumn();
-				for ($row = 2; $row <= $highestRow; $row++) {
-					//     $id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-					//$date1 = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-					// $date = date("Y-m-d", strtotime($worksheet->getCellByColumnAndRow(1, $row)->getValue()));
-					$date	 = date('Y-m-d', PHPExcel_Shared_Date::ExcelToPHP($object->setActiveSheetIndex(0)->getCellByColumnAndRow(1, $row)->getValue()));
-					$cnn_no = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-					$consumer_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-					$address = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-					$type = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-					$tab_size = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-					$status = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
-					$area_name = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-					$city = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-					//    $op_bal = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-					//   $bill_amt = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
-					//  $rcpt_amt = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
-					//   $bal_amt = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
-
-
-
-					$data[] = array(
-						// 'id'  => $id,
-						'date'  => $date,
-						'cnn_no'  => $cnn_no,
-						'consumer_name'  => $consumer_name,
-						'consumer_address'  => $address,
-						'conn_type'  => $type,
-						'tab_size'  => $tab_size,
-						'status'  => $status,
-						'area_name'  => $area_name,
-						'city'  => $city,
-						// 'op_bal'  => $op_bal,
-						// 'bill_amt'  => $bill_amt,
-						//  'rcpt_amt'  => $rcpt_amt,
-						//   'bal_amt'  => $bal_amt,
-
-					);
-				}
-			}
-			$res =   $this->Excel_import_model->insert($data);
-			// $res=   $this->Excel_import_model->insert($data);
-			// print_r($res);
-
-			echo 'Data Imported successfully';
-		}
-	}
-
-
-
-
-	function import_update()
-	{
-		if (isset($_FILES["file"]["name"])) {
-			$path = $_FILES["file"]["tmp_name"];
-			$object = PHPExcel_IOFactory::load($path);
-
-			$id = "";
-			foreach ($object->getWorksheetIterator() as $worksheet) {
-				$highestRow = $worksheet->getHighestRow();
-				$highestColumn = $worksheet->getHighestColumn();
-				for ($row = 2; $row <= $highestRow; $row++) {
-					//$id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-					//$date1 = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-					// $date = date("Y-m-d", strtotime($worksheet->getCellByColumnAndRow(1, $row)->getValue()));
-
-					// $date	 = date('Y-m-d',PHPExcel_Shared_Date::ExcelToPHP($object->setActiveSheetIndex(0)->getCellByColumnAndRow(1,$row)->getValue()));
-					// $cnn_no = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-					// $consumer_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-					// $address = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-					// $type = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-					// $tab_size = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-					// $status = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
-					// $area_name = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-					// $city = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-
-					$cnn_no = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-					$op_bal = 0;
-					$bill_amt = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-					$rcpt_amt = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-					$bal_amt = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-
-
-					$id = $cnn_no;
-					$data = array(
-						// 'id'  => $id,
-
-						'op_bal'  => $op_bal,
-						'bill_amt'  => $bill_amt,
-						'rcpt_amt'  => $rcpt_amt,
-						'bal_amt'  => $bal_amt,
-
-					);
-				}
-			}
-			$this->Excel_import_model->updatedata($data, $id);
-			// $res=   $this->Excel_import_model->insert($data);
-			// print_r($res);
-
-			echo 'Data Updated successfully';
-		}
-	}
-
 	function import_birth()
 	{
 		$data = array();
@@ -140,7 +29,7 @@ class Excel_import extends CI_Controller
 					$dob	 =  "";
 					$dob1 = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 					if ($dob1 == "" || $dob1 == "data not found" || $dob1 == null) {
-						$dob1 = "";
+						$dob = "";
 					} else {
 						$split = explode(" ", $dob1);
 						$dob = date("Y-m-d", strtotime($split[1]));
@@ -157,6 +46,8 @@ class Excel_import extends CI_Controller
 					$father_name = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
 					$father_name_m = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
 
+					date_default_timezone_set('Asia/Kolkata');
+					$date = date("Y-m-d H:i:s");
 
 
 
@@ -196,6 +87,7 @@ class Excel_import extends CI_Controller
 								'applicant_name' => $applicant_name,
 								'reg_no' => $reg_no,
 								'reg_no2' => $reg_no,
+								'reg_date' => $dob,
 								'dob' => $dob,
 								'child_name' => $child_name,
 								'child_name_m' => $chold_name_m,
@@ -204,6 +96,8 @@ class Excel_import extends CI_Controller
 								'father_name' => $father_name,
 								'father_name_m' => $father_name_m,
 								'user_id' => $user,
+								'add_date' => $date,
+								'modify_date' => $date,
 							);
 						}
 					}
@@ -212,6 +106,102 @@ class Excel_import extends CI_Controller
 			//$res =   $this->Excel_import_model->insert($data);
 			if (!empty($data)) {
 				$res =   $this->Excel_import_model->insert($data);
+			}
+
+			//print_r($data);
+
+			echo $count . ' Records Imported successfully';
+		}
+	}
+
+	function import_death()
+	{
+		$data = array();
+		$count = 0;
+		if (isset($_FILES["file"]["name"])) {
+			$path = $_FILES["file"]["tmp_name"];
+
+			$cacheMethod = PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp;
+			$cacheSettings = array(' memoryCacheSize ' => '8MB');
+			PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+
+			$objReader = PHPExcel_IOFactory::createReader('Excel2007');
+			$object = $objReader->load($path);
+			//$object = PHPExcel_IOFactory::load($path);
+			foreach ($object->getWorksheetIterator() as $worksheet) {
+				$highestRow = $worksheet->getHighestRow();
+				$highestColumn = $worksheet->getHighestColumn();
+				for ($row = 2; $row <= $highestRow; $row++) {
+
+
+					$dod	 =  "";
+					$dod1 = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+					if ($dod1 == "" || $dod1 == "data not found" || $dod1 == null) {
+						$dod = "";
+					} else {
+						$split = explode(" ", $dod1);
+						$dod = date("Y-m-d", strtotime($split[1]));
+					}
+
+
+
+					//	$dob	 = date('Y-m-d', PHPExcel_Shared_Date::ExcelToPHP($object->setActiveSheetIndex(0)->getCellByColumnAndRow(2, $row)->getValue()));
+					$reg_no = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+					$deceased_name_m = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+					$deceased_name = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+					$deceased_mother_name = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+					$deceased_mother_name_m = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+					date_default_timezone_set('Asia/Kolkata');
+					$date = date("Y-m-d H:i:s");
+
+
+
+
+
+
+					if ($reg_no == "" || $reg_no == "data not found" || $reg_no == null) {
+					} else {
+
+						$cnt =   $this->Excel_import_model->chk_reg_no2($reg_no);
+
+
+						if ($cnt > 0) {
+						} else {
+							if ($deceased_name == "" || $deceased_name == "data not found" || $deceased_name == null) {
+								$deceased_name = "";
+							}
+							if ($deceased_name_m == "" || $deceased_name_m == "data not found" || $deceased_name_m == null) {
+								$deceased_name_m = "";
+							}
+							if ($deceased_mother_name == "" || $deceased_mother_name == "data not found" || $deceased_mother_name == null) {
+								$deceased_mother_name = "";
+							}
+							if ($deceased_mother_name_m == "" || $deceased_mother_name_m == "data not found" || $deceased_mother_name_m == null) {
+								$deceased_mother_name_m = "";
+							}
+
+							$user = $this->session->userid;
+							$count = $count + 1;
+
+							$data[] = array(
+								'reg_no' => $reg_no,
+								'reg_date' => $dod,
+								'dod' => $dod,
+								'deceased_name_m' => $deceased_name_m,
+								'deceased_name' => $deceased_name,
+								'deceased_mother_name' => $deceased_mother_name,
+								'deceased_mother_name_m' => $deceased_mother_name_m,
+								'user_id' => $user,
+								'add_date' => $date,
+								'modify_date' => $date,
+							);
+						}
+					}
+				}
+			}
+			//$res =   $this->Excel_import_model->insert($data);
+			if (!empty($data)) {
+				$res =   $this->Excel_import_model->insert_death($data);
 			}
 
 			//print_r($data);

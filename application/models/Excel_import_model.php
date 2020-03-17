@@ -40,4 +40,17 @@ class Excel_import_model extends CI_Model
 		return $query->num_rows();
 	}
 
+	function chk_reg_no2($reg_no)
+	{
+		$this->db->select('reg_no');
+		$this->db->from('death_registration');
+		$this->db->where('reg_no', $reg_no);
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+	function insert_death($data)
+	{
+		$this->db->insert_batch('death_registration', $data);
+	}
+
 }
