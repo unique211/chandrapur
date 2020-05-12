@@ -63,23 +63,46 @@ class Birth_model extends CI_Model
 			return $query->result();
 		}
 	}
-	function showdata_filtered($table, $user)
+	function showdata_filtered($table, $user, $dob, $name, $reg_no, $from, $to)
 	{
 		//$user = $this->session->userid;
 		//	$role = $this->session->role;
 		if ($table == "birth_registration") {
-			if ($user == "All") {
-				$this->db->select('birth_registration.*');
-				$this->db->from('birth_registration');
-				$this->db->where('status', '1');
-				$query = $this->db->get();
-			} else {
-				$this->db->select('birth_registration.*');
-				$this->db->from('birth_registration');
+			// if ($user == "All") {
+			// 	$this->db->select('birth_registration.*');
+			// 	$this->db->from('birth_registration');
+			// 	$this->db->where('status', '1');
+			// 	$query = $this->db->get();
+			// } else {
+			// 	$this->db->select('birth_registration.*');
+			// 	$this->db->from('birth_registration');
+			// 	$this->db->where('user_id', $user);
+			// 	$this->db->where('status', '1');
+			// 	$query = $this->db->get();
+			// }
+
+
+			$this->db->select('birth_registration.*');
+			$this->db->from('birth_registration');
+			if ($user != "All") {
 				$this->db->where('user_id', $user);
-				$this->db->where('status', '1');
-				$query = $this->db->get();
 			}
+			if ($dob != "") {
+				$this->db->where('dob', $dob);
+			}
+			if ($reg_no != "") {
+				$this->db->where('reg_no', $reg_no);
+			}
+			if ($name != "") {
+				$this->db->like('child_name', $name);
+			}
+			if ($from != "") {
+				$this->db->where('reg_date >=', $from);
+				$this->db->where('reg_date <=', $to);
+			}
+			$this->db->where('status', '1');
+			$query = $this->db->get();
+
 			return $query->result();
 		}
 	}

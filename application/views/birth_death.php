@@ -39,40 +39,99 @@
 								?>
 									<div class="col-lg-12 ">
 										<form action="" name="filter_form" id="filter_form">
-											<div class="col-md-1">
-												<label class="control-label"> Zone</label>
-											</div>
-											<div class="col-md-2">
-												<select class="form-control zone" style="width:100%;" name="zone_filter" id="zone_filter" required>
-													<option selected value="All">All</option>
-												</select>
-											</div>
-											<div class="col-md-1">
-												<label class="control-label">Sub Zone</label>
-											</div>
-											<div class="col-md-3">
-												<select class="form-control" style="width:100%;" name="subzone_filter" id="subzone_filter" required>
-													<option selected value="All">All</option>
+											<div class="form-group row">
+												<div class="col-md-1">
+													<label class="control-label"> Zone</label>
+												</div>
+												<div class="col-md-3">
+													<select class="form-control zone" style="width:100%;" name="zone_filter" id="zone_filter" required>
+														<option selected value="All">All</option>
+													</select>
+												</div>
+												<div class="col-md-1">
+													<label class="control-label">Sub Zone</label>
+												</div>
+												<div class="col-md-3">
+													<select class="form-control" style="width:100%;" name="subzone_filter" id="subzone_filter" required>
+														<option selected value="All">All</option>
 
 
-												</select>
+													</select>
+												</div>
+												<div class="col-md-1">
+													<label class="control-label">Staff</label>
+												</div>
+												<div class="col-md-3">
+													<select class="form-control " style="width:100%;" name="staff_filter" id="staff_filter" required>
+														<option selected value="All">All</option>
+
+
+													</select>
+
+
+												</div>
 											</div>
-											<div class="col-md-1">
-												<label class="control-label">Staff</label>
+
+											<div class="form-group row">
+												<div class="col-md-1">
+													<label class="control-label"> From Date</label>
+												</div>
+												<div class="col-md-3">
+												<div class="input-group date " data-provide="datepicker" required>
+														<input type="text" class="form-control input-sm placeholdesize date1" placeholder="From Date" id="from_filter" autocomplete="off" name="from_filter" >
+														<div class="input-group-addon">
+															<span class="fa fa-calendar"></span>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-1">
+													<label class="control-label"> To Date</label>
+												</div>
+												<div class="col-md-3">
+												<div class="input-group date " data-provide="datepicker" required>
+														<input type="text" class="form-control input-sm placeholdesize date1" placeholder="To Date" id="to_filter" autocomplete="off" name="to_filter" >
+														<div class="input-group-addon">
+															<span class="fa fa-calendar"></span>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-1">
+													<label class="control-label">Birth Date</label>
+												</div>
+												<div class="col-md-3">
+												<div class="input-group date " data-provide="datepicker" required>
+														<input type="text" class="form-control input-sm placeholdesize date1" placeholder="Birth Date" id="dob_filter" autocomplete="off" name="dob_filter" >
+														<div class="input-group-addon">
+															<span class="fa fa-calendar"></span>
+														</div>
+													</div>
+
+												</div>
 											</div>
-											<div class="col-md-3">
-												<select class="form-control " style="width:100%;" name="staff_filter" id="staff_filter" required>
-													<option selected value="All">All</option>
 
-
-												</select>
-
-
-											</div>
-											<div class="col-md-1">
+											<div class="form-group row">
+												<div class="col-md-1">
+													<label class="control-label"> Name</label>
+												</div>
+												<div class="col-md-3">
+												<input type="text" name="name_filter" id="name_filter" class="form-control" placeholder="Name">
+												</div>
+												<div class="col-md-1">
+													<label class="control-label"> Registration Number</label>
+												</div>
+												<div class="col-md-3">
+												<input type="text" name="regno_filter" id="regno_filter" class="form-control" placeholder="Registration Number">
+												</div>
+												<div class="col-md-1">
+													
+												</div>
+												<div class="col-md-3">
 												<button type="submit" class="btn btn-warning">Filter</button>
-												<br><br>
+
+												</div>
 											</div>
+
+										
 										</form>
 									</div>
 								<?php
@@ -1501,7 +1560,7 @@
 															<td colspan="4">&nbsp;</td>
 														</tr>
 														<tr>
-															<td  class="tbl_data">
+															<td class="tbl_data">
 																<font style="vertical-align: inherit;">
 																	<font style="vertical-align: inherit;">
 																		बाळाचे जन्माचेवेळी आई-वडिलांचा पत्ता :</font>
@@ -1509,60 +1568,60 @@
 															</td>
 															<td class="tbl_data" id="ac_parent_addresss_at_birth_m">
 															</td>
-															<td  class="tbl_data">
+															<td class="tbl_data">
 																<font style="vertical-align: inherit;">
 																	<font style="vertical-align: inherit;">
 																		आई-वडिलांचा कायमचा पत्ता :
 																	</font>
 																</font>
 															</td>
-															<td  class="tbl_data" id="ac_parent_perminent_address_m">
+															<td class="tbl_data" id="ac_parent_perminent_address_m">
 															</td>
 														</tr>
 														<tr>
-														<td colspan="4">&nbsp;</td>
-														
+															<td colspan="4">&nbsp;</td>
+
 														</tr>
-														
+
 														<tr>
-															<td  class="tbl_data">
+															<td class="tbl_data">
 																<font style="vertical-align: inherit;">
 																	<font style="vertical-align: inherit;">
 																		Address of Parents at the time
 																		of child birth:</font>
 																</font>
 															</td>
-															<td  class="tbl_data" id="ac_parent_addresss_at_birth">
+															<td class="tbl_data" id="ac_parent_addresss_at_birth">
 															</td>
-															<td  class="tbl_data">
+															<td class="tbl_data">
 																<font style="vertical-align: inherit;">
 																	<font style="vertical-align: inherit;">
 																		Permanent Address of Parents:
 																	</font>
 																</font>
 															</td>
-															<td  class="tbl_data" id="ac_parent_perminent_address">
+															<td class="tbl_data" id="ac_parent_perminent_address">
 															</td>
 														</tr>
 														<tr>
-														<td colspan="4">&nbsp;</td>
+															<td colspan="4">&nbsp;</td>
 														</tr>
-														
+
 														<tr>
-															<td  class="tbl_data">
+															<td class="tbl_data">
 																<font style="vertical-align: inherit;">
 																	<font style="vertical-align: inherit;">
 																		शेरा / Remark:
 																	</font>
 																</font>
 															</td>
-															<td  class="tbl_data" id="ac_remarks"></td>
+															<td class="tbl_data" id="ac_remarks"></td>
 														</tr>
 														<tr>
 															<td colspan="4">&nbsp;</td>
 														</tr>
 														<tr>
-															<td  class="tbl_data">
+															<td class="tbl_data">
 																<font style="vertical-align: inherit;">
 																	<font style="vertical-align: inherit;">
 																		नोंदणीपत्र दिल्याचा दिनांक :</font>
@@ -1578,7 +1637,7 @@
 															<td>&nbsp;</td>
 														</tr>
 														<tr>
-															<td  class="tbl_data">
+															<td class="tbl_data">
 																<font style="vertical-align: inherit;">
 																	<font style="vertical-align: inherit;">
 																		Date of Issue of Registration
@@ -2342,6 +2401,7 @@
 		date = date.toString('DD/MM/YYYY');
 		$(".date").val(date);
 		//  $("#fdate").val(date);
+		
 	</script>
 </body>
 
