@@ -123,22 +123,105 @@ $(document).ready(function() {
                 $('#master_form')[0].reset();
                 $('#form1').hide();
                 $(".tablehideshow").show();
-                datashow();
+                // datashow();
             }
         });
     });
+    $(document).on("change", "#from_filter", function(e) {
+        e.preventDefault();
+        var from_filter = $("#from_filter").val();
+        var to_filter = $("#to_filter").val();
+        if (to_filter == "") {
+            $("#to_filter").val(from_filter);
+        }
+    });
+    $(document).on("change", "#to_filter", function(e) {
+        e.preventDefault();
+        var to_filter = $("#to_filter").val();
+        var from_filter = $("#from_filter").val();
+        if (from_filter == "") {
+            $("#from_filter").val(to_filter);
+        }
+    });
+
+    function getDate(input) {
+        from = input.split("/");
+        return new Date(from[2], from[1] - 1, from[0]);
+    }
     $(document).on("submit", "#filter_form", function(e) {
         e.preventDefault();
-        datashow();
+        var from = $('#from_filter').val();
+        var to = $('#to_filter').val();
+
+        var date1 = new Date();
+        date1 = date1.toString('dd/MM/yyyy');
+        var date_ini = getDate(from);
+        var date_end = getDate(to);
+
+        var tdateAr = from.split('/');
+        var fromdate = tdateAr[2] + '-' + tdateAr[1] + '-' + tdateAr[0];
+
+        var tdateAr = to.split('/');
+        var todate = tdateAr[2] + '-' + tdateAr[1] + '-' + tdateAr[0];
+
+
+        var date_ini2 = new Date(fromdate).toDateString();
+        var date_end2 = new Date(todate).toDateString();
+
+
+        if (date_ini < date_end) {
+            datashow();
+            //put code here to call server
+        } else {
+            if (date_ini2 == date_end2) {
+                datashow();
+            } else {
+                swal("To Date is Invalid", "Hey, To Date is Always > OR = From Date !!", "error");
+            }
+        }
+        // datashow();
     });
     //----------------------submit form code end------------------------------
-    datashow();
+    //  datashow();
     //----------------show data in the tabale code start-----------------------
     function datashow() {
 
 
         if (role == "admin" || role == "staff") {
             var staff_filter = $("#staff_filter").val();
+            var dob_filter1 = $("#dob_filter").val();
+            var dob_filter = "";
+            if (dob_filter1 != "") {
+                var fdateslt = dob_filter1.split('/');
+                dob_filter = fdateslt[2] + '-' + fdateslt[1] + '-' + fdateslt[0];
+            }
+
+            var from1 = $('#from_filter').val();
+            var to1 = $('#to_filter').val();
+            var from = "";
+            var to = "";
+
+            if (from1 != "") {
+                var fdateslt = from1.split('/');
+                from = fdateslt[2] + '-' + fdateslt[1] + '-' + fdateslt[0];
+                if (to1 == "") {
+                    to = from;
+                }
+            }
+            if (to1 != "") {
+                var fdateslt = to1.split('/');
+                to = fdateslt[2] + '-' + fdateslt[1] + '-' + fdateslt[0];
+                if (from1 == "") {
+                    from = to;
+                }
+            }
+
+            var name_filter = $("#name_filter").val();
+            var regno_filter = $("#regno_filter").val();
+
+            // alert(dob_filter);
+
+
 
             $.ajax({
                 type: "POST",
@@ -146,6 +229,11 @@ $(document).ready(function() {
                 data: {
                     table_name: 'birth_registration',
                     staff_filter: staff_filter,
+                    dob_filter: dob_filter,
+                    name_filter: name_filter,
+                    regno_filter: regno_filter,
+                    from: from,
+                    to: to,
                 },
                 dataType: "JSON",
                 async: false,

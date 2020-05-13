@@ -15,7 +15,11 @@ class Death extends CI_Controller
 	{
 		$table_name   = $this->input->post('table_name');
 		$user = $this->input->post('staff_filter');
-		$data1 = $this->Death_model->showdata_filtered($table_name, $user);
+		$name = $this->input->post('name_filter');
+		$reg_no = $this->input->post('regno_filter');
+		$from = $this->input->post('from');
+		$to = $this->input->post('to');
+		$data1 = $this->Death_model->showdata_filtered($table_name, $user,$name,$reg_no,$from,$to);
 		echo json_encode($data1);
 	}
 	public function adddata()
