@@ -1573,6 +1573,7 @@ $(document).ready(function() {
             dataType: "JSON",
             async: false,
             success: function(data) {
+
                 var data = eval(data);
                 for (var i = 0; i < data.length; i++) {
                     var fdateval = data[i].receipt_date;
@@ -1609,6 +1610,7 @@ $(document).ready(function() {
                 }
             }
         });
+        // alert(isNew);
         if (isNew) {
             console.log('from else of receipt');
             //retrive receive from 
@@ -1636,11 +1638,11 @@ $(document).ready(function() {
                         // console.log("today: " + today);
                         var rs = 0;
                         if (age <= 90) {
-                            rs = 250;
+                            rs = 265;
                         } else if (age >= 91 && age <= 365) {
-                            rs = 350;
+                            rs = 315;
                         } else {
-                            rs = 450;
+                            rs = 415;
                         }
                         $('#amt').val(rs);
                         $('#amt_words').val(convertNumberToWords(rs));

@@ -286,6 +286,15 @@ class Marrige_model extends CI_Model
 		$result = $this->db->get()->result();
 		return $result;
 	}
+
+
+	function getFiscalYear($timestamp)
+	{
+		$year = (int) date('Y', $timestamp);
+		$fiscalYearEndDate = strtotime('31 March ' . $year);
+		if ($timestamp < $fiscalYearEndDate) $year--;
+		return $year;
+	}
 	//insert into challan
 	function get_receipt_id($date)
 	{
@@ -301,6 +310,10 @@ class Marrige_model extends CI_Model
 			$id = $row->id;
 			$challan_no = $row->challan_no;
 		}
+	
+	
+	
+	
 		if ($id != 0) {
 			$data = array(
 				'modify_date' => date("Y-m-d H:i:s"),
@@ -327,14 +340,17 @@ class Marrige_model extends CI_Model
 			);
 			$this->db->insert('db_logs', $logs);
 		} else {
+			$date1=strtotime($date);
+			$fiscalYear = $this->getFiscalYear($date1);
 			$this->db->select("max(sr) as msr");
 			$this->db->from('marrige_challan');
+			$this->db->where('YEAR(c_date)', $fiscalYear);
 			$query = $this->db->get();
 			foreach ($query->result() as $row) {
 				$msr = $row->msr;
 			}
-			if ($msr < 366)
-				$msr = 366;
+			if ($msr < 0)
+				$msr = 0;
 			$msr++;
 			$sr = $msr;
 			while (strlen($msr) < 5) {
@@ -342,13 +358,16 @@ class Marrige_model extends CI_Model
 			}
 			$pre = 'CMC_GAC';
 			$challan_no = $pre . '' . $msr;
+			$user_id = $this->session->userid;
 			//    $challan_no = $msr;
 			$data = array(
 				'c_date' => $date,
 				'pre' => $pre,
 				'sr' => $sr,
 				'challan_no' => $challan_no,
-				'user_id' => 1,
+				'user_id' => $user_id,
+				'zone_id' => $this->session->zone,
+				'dept_id' => $this->session->deptId,
 			);
 			$result = $this->db->insert('marrige_challan', $data);
 
@@ -370,8 +389,6 @@ class Marrige_model extends CI_Model
 			);
 			$this->db->insert('db_logs', $logs);
 		}
-
-
 		return $challan_no;
 	}
 	function get_receipt_id2($year)

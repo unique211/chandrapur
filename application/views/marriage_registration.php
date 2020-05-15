@@ -690,9 +690,9 @@
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
-                                                        <td>Memorandum presented<br>1)from 1 - 90 days 250
-                                                            Rs.<br>2)from 91 - 365 days 350
-                                                            Rs.<br>3)After 365 days 450 Rs.</td>
+                                                        <td>Memorandum presented<br>1)from 1 - 90 days 265
+                                                            Rs.<br>2)from 91 - 365 days 315
+                                                            Rs.<br>3)After 365 days 415 Rs.</td>
                                                         <td align="center"><input type="checkbox" name="checkbox"
                                                                 id="ch_3_1"><br><br><input type="checkbox"
                                                                 name="checkbox" id="ch_3_2"><br><br><input
