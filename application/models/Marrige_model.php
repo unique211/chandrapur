@@ -342,9 +342,15 @@ class Marrige_model extends CI_Model
 		} else {
 			$date1=strtotime($date);
 			$fiscalYear = $this->getFiscalYear($date1);
+			$lastyear=intval($fiscalYear)+1;
+
+			$start=$fiscalYear."-04-01";
+			$end=$lastyear."-03-31";
+
 			$this->db->select("max(sr) as msr");
 			$this->db->from('marrige_challan');
-			$this->db->where('YEAR(c_date)', $fiscalYear);
+			$this->db->where('c_date >=', $start);
+			$this->db->where('c_date <=', $end);
 			$query = $this->db->get();
 			foreach ($query->result() as $row) {
 				$msr = $row->msr;
