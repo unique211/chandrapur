@@ -6,10 +6,20 @@ $(document).ready(function() {
     function getServerTime() {
         return $.ajax({ async: false }).getResponseHeader('Date');
     }
+    $(document).on('change', '#language', function() {
+        var language = $('#language').val();
+        if ($('#save_update').val() != '') {
+            // if (language == 'english') {
+            //     $('#btnprint2').hide();
+            //     $('#btnprint').show();
 
-
-
-
+            //     //   $('#btnprint').val(data);
+            // } else {
+            //     $('#btnprint').hide();
+            //     $('#btnprint2').show();
+            // }
+        }
+    });
 
 
 
@@ -43,70 +53,16 @@ $(document).ready(function() {
     }
 
     //----------------------------------get max id end---------------------------------------------
-
-
-    function getDate(input) {
-        from = input.split("/");
-        return new Date(from[2], from[1] - 1, from[0]);
-    }
     //----------------------submit form code start------------------------------
     $(document).on("submit", "#master_form", function(e) {
         e.preventDefault();
-        var from = $("#from").val();
-        var to = $("#to").val();
 
-        var fdob = from.split('/');
-        var fromdate = fdob[2] + "-" + fdob[1] + "-" + fdob[0];
-
-        var fdob = to.split('/');
-        var todate = fdob[2] + "-" + fdob[1] + "-" + fdob[0];
-
-        var date1 = new Date();
-        date1 = date1.toString('dd/MM/yyyy');
-        var date_ini = getDate(from);
-        var date_end = getDate(to);
-
-
-        var today = new Date().toDateString();
-
-        var date_ini2 = new Date(fromdate).toDateString();
-        var date_end2 = new Date(todate).toDateString();
-
-        if (date_ini < date_end) {
-            add_record();
-            //put code here to call server
-        } else {
-            if (date_ini2 == date_end2) {
-                add_record();
-            } else {
-                swal("To Date is Invalid", "Hey, To Date is Always > OR = From Date !!", "error");
-            }
-
-        }
-
-
-    });
-
-    function add_record() {
         var name = $('#name').val();
-        // var ward_no = $('#ward_no').val();
-        // var municipalty_ward_no = $('#munici_ward_no').val();
-        // var year = $('#year').val();
+        var ward_no = $('#ward_no').val();
+        var municipalty_ward_no = $('#munici_ward_no').val();
+        var year = $('#year').val();
         var date1 = $('#date').val();
-        //	var language = $('#language').val();
-
-        var business_name = $("#business_name").val();
-        var business_address = $("#business_address").val();
-        var business_type = $("#business_type").val();
-        var dimension = $("#dimension").val();
-        var charge_type = $("#charge_type").val();
-        var charge = $("#charge").val();
-        var from1 = $("#from").val();
-        var to1 = $("#to").val();
-        var remark2 = $("#remarks2").val();
-        var cus_photo = $("#file_attachother3").val();
-
-
+        var language = $('#language').val();
         var id = $('#save_update').val();
         var d = new Date(getServerTime());
         var year2 = d.getFullYear();
@@ -129,11 +85,6 @@ $(document).ready(function() {
         var dateslt = date1.split('/');
         var date = dateslt[2] + '-' + dateslt[1] + '-' + dateslt[0];
 
-        var dateslt = from1.split('/');
-        var from = dateslt[2] + '-' + dateslt[1] + '-' + dateslt[0];
-        var dateslt = to1.split('/');
-        var to = dateslt[2] + '-' + dateslt[1] + '-' + dateslt[0];
-
         $.ajax({
             type: "POST",
             url: baseurl + "Occuption_c/adddata",
@@ -141,20 +92,10 @@ $(document).ready(function() {
             data: {
                 id: id,
                 name: name,
-                // ward_no: ward_no,
-                // municipalty_ward_no: municipalty_ward_no,
-                // language: language,
-                // year: year,
-                business_name: business_name,
-                business_address: business_address,
-                business_type: business_type,
-                dimension: dimension,
-                charge_type: charge_type,
-                charge: charge,
-                from: from,
-                to: to,
-                remark2: remark2,
-                cus_photo: cus_photo,
+                ward_no: ward_no,
+                municipalty_ward_no: municipalty_ward_no,
+                language: language,
+                year: year,
                 date: date,
                 year2: year2,
                 unique_no: unique,
@@ -170,8 +111,8 @@ $(document).ready(function() {
 
                     console.log('from false');
                     $('#save_update').val(data);
-                    // $('#btnprint').val(data);
-                    // $('#btnprint2').val(data);
+                    $('#btnprint').val(data);
+                    $('#btnprint2').val(data);
                     $('#ref_id').val(data);
                     // successTost("Record Saved Successfully");
 
@@ -179,8 +120,8 @@ $(document).ready(function() {
                     //  successTost("Record Saved Successfully");
                     console.log('from true');
                     $('#save_update').val(id);
-                    // $('#btnprint').val(id);
-                    // $('#btnprint2').val(id);
+                    $('#btnprint').val(id);
+                    $('#btnprint2').val(id);
                     $('#ref_id').val(id);
                 }
                 datashow();
@@ -218,7 +159,7 @@ $(document).ready(function() {
                             success: function(result) {
                                 if (result == true) {
                                     successTost("Record Saved Successfully");
-                                    $('.closehideshow').trigger('click');
+
 
                                 } else {
                                     errorTost("Something Wrong", "error");
@@ -245,7 +186,8 @@ $(document).ready(function() {
             }
 
         });
-    }
+
+    });
 
     $(document).on("submit", "#filter_form", function(e) {
         e.preventDefault();
@@ -278,17 +220,17 @@ $(document).ready(function() {
                         '<thead>' +
                         '<tr>' +
                         '<th><font style="font-weight:bold">Id</font></th>' +
-                        // '<th><font style="font-weight:bold">Name</font></th>' +
-                        // '<th><font style="font-weight:bold">Ward_Number</font></th>' +
-                        // '<th><font style="font-weight:bold">Municipality Number</font></th>' +
+                        '<th><font style="font-weight:bold">Name</font></th>' +
+                        '<th><font style="font-weight:bold">Ward_Number</font></th>' +
+                        '<th><font style="font-weight:bold">Municipality Number</font></th>' +
                         '<th><font style="font-weight:bold">Year</font></th>' +
                         '<th><font style="font-weight:bold">Date</font></th>' +
                         '<th><font style="font-weight:bold">Unique Number</font></th>' +
-                        // '<th><font style="font-weight:bold">Status</font></th>' +
-                        // '<th><font style="font-weight:bold">Remarks</font></th>' +
-                        // '<th><font style="font-weight:bold">Document</font></th>' +
-                        // '<th><font style="font-weight:bold">Download</font></th>' +
-                        // '<th style="display:none"><font style="font-weight:bold">language</font></th>' +
+                        '<th><font style="font-weight:bold">Status</font></th>' +
+                        '<th><font style="font-weight:bold">Remarks</font></th>' +
+                        '<th><font style="font-weight:bold">Document</font></th>' +
+                        '<th><font style="font-weight:bold">Download</font></th>' +
+                        '<th style="display:none"><font style="font-weight:bold">language</font></th>' +
                         '<th style="display:none"><font style="font-weight:bold">Sr No</font></th>' +
                         '<th class="not-export-column"><font style="font-weight:bold">Operations</font></th>' +
 
@@ -317,16 +259,16 @@ $(document).ready(function() {
                         html += '<tr>' +
                             '<td id="id_' + data[i].id + '">' + data[i].id + '</td>' +
                             '<td id="name_' + data[i].id + '">' + data[i].name + '</td>' +
-                            // '<td id="ward_no_' + data[i].id + '">' + data[i].ward_no + '</td>' +
-                            // '<td id="municipalty_ward_no_' + data[i].id + '">' + data[i].municipalty_ward_no + '</td>' +
-                            // '<td id="year_' + data[i].id + '">' + data[i].year + '</td>' +
+                            '<td id="ward_no_' + data[i].id + '">' + data[i].ward_no + '</td>' +
+                            '<td id="municipalty_ward_no_' + data[i].id + '">' + data[i].municipalty_ward_no + '</td>' +
+                            '<td id="year_' + data[i].id + '">' + data[i].year + '</td>' +
                             '<td id="date1_' + data[i].id + '">' + date1 + '</td>' +
                             '<td id="unique_no_' + data[i].id + '">' + data[i].unique_no + '</td>' +
-                            //      '<td id="status_' + data[i].id + '">' + data[i].status + '</td>' +
-                            // '<td id="remark_' + data[i].id + '">' + data[i].remark + '</td>' +
-                            // '<td id="doc_' + data[i].id + '">' + doc + '</td>' +
-                            // '<td id="download_' + data[i].id + '"><a href=' + baseurl + 'Occuption_c/download/' + data[i].id + '>' + download + '</a></td>' +
-                            //  '<td style="display:none" id="language_' + data[i].id + '">' + data[i].language + '</td>' +
+                            '<td id="status_' + data[i].id + '">' + data[i].status + '</td>' +
+                            '<td id="remark_' + data[i].id + '">' + data[i].remark + '</td>' +
+                            '<td id="doc_' + data[i].id + '">' + doc + '</td>' +
+                            '<td id="download_' + data[i].id + '"><a href=' + baseurl + 'Occuption_c/download/' + data[i].id + '>' + download + '</a></td>' +
+                            '<td style="display:none" id="language_' + data[i].id + '">' + data[i].language + '</td>' +
                             '<td style="display:none" id="srno_' + data[i].id + '">' + data[i].sr_no + '</td>' +
                             '<td class="not-export-column" ><button name="edit" value="edit" class="edit_data btn btn-success" id=edit_' + data[i].id + '><i class="fa fa-edit"></i></button>';
                         if (role == "admin") {
@@ -365,15 +307,15 @@ $(document).ready(function() {
                         '<tr>' +
                         '<th><font style="font-weight:bold">Id</font></th>' +
                         '<th><font style="font-weight:bold">Name</font></th>' +
-                        // '<th><font style="font-weight:bold">Ward_Number</font></th>' +
-                        // '<th><font style="font-weight:bold">Municipality Number</font></th>' +
-                        // '<th><font style="font-weight:bold">Year</font></th>' +
+                        '<th><font style="font-weight:bold">Ward_Number</font></th>' +
+                        '<th><font style="font-weight:bold">Municipality Number</font></th>' +
+                        '<th><font style="font-weight:bold">Year</font></th>' +
                         '<th><font style="font-weight:bold">Date</font></th>' +
                         '<th><font style="font-weight:bold">Unique Number</font></th>' +
-                        //   '<th><font style="font-weight:bold">Status</font></th>' +
-                        // '<th><font style="font-weight:bold">Remarks</font></th>' +
-                        // '<th><font style="font-weight:bold">Download</font></th>' +
-                        // '<th style="display:none"><font style="font-weight:bold">language</font></th>' +
+                        '<th><font style="font-weight:bold">Status</font></th>' +
+                        '<th><font style="font-weight:bold">Remarks</font></th>' +
+                        '<th><font style="font-weight:bold">Download</font></th>' +
+                        '<th style="display:none"><font style="font-weight:bold">language</font></th>' +
                         '<th style="display:none"><font style="font-weight:bold">Sr No</font></th>' +
                         '<th class="not-export-column"><font style="font-weight:bold">Operations</font></th>' +
 
@@ -397,15 +339,15 @@ $(document).ready(function() {
                         html += '<tr>' +
                             '<td id="id_' + data[i].id + '">' + data[i].id + '</td>' +
                             '<td id="name_' + data[i].id + '">' + data[i].name + '</td>' +
-                            // '<td id="ward_no_' + data[i].id + '">' + data[i].ward_no + '</td>' +
-                            // '<td id="municipalty_ward_no_' + data[i].id + '">' + data[i].municipalty_ward_no + '</td>' +
-                            // '<td id="year_' + data[i].id + '">' + data[i].year + '</td>' +
+                            '<td id="ward_no_' + data[i].id + '">' + data[i].ward_no + '</td>' +
+                            '<td id="municipalty_ward_no_' + data[i].id + '">' + data[i].municipalty_ward_no + '</td>' +
+                            '<td id="year_' + data[i].id + '">' + data[i].year + '</td>' +
                             '<td id="date1_' + data[i].id + '">' + date1 + '</td>' +
                             '<td id="unique_no_' + data[i].id + '">' + data[i].unique_no + '</td>' +
-                            //  '<td id="status_' + data[i].id + '">' + data[i].status + '</td>' +
-                            // '<td id="remark_' + data[i].id + '">' + data[i].remark + '</td>' +
-                            // '<td id="download_' + data[i].id + '"><a href=' + baseurl + 'Occuption_c/download/' + data[i].id + '>' + download + '</a></td>' +
-                            // '<td style="display:none" id="language_' + data[i].id + '">' + data[i].language + '</td>' +
+                            '<td id="status_' + data[i].id + '">' + data[i].status + '</td>' +
+                            '<td id="remark_' + data[i].id + '">' + data[i].remark + '</td>' +
+                            '<td id="download_' + data[i].id + '"><a href=' + baseurl + 'Occuption_c/download/' + data[i].id + '>' + download + '</a></td>' +
+                            '<td style="display:none" id="language_' + data[i].id + '">' + data[i].language + '</td>' +
                             '<td style="display:none" id="srno_' + data[i].id + '">' + data[i].sr_no + '</td>' +
                             '<td class="not-export-column" ><button name="edit" value="edit" class="edit_data btn btn-success" id=edit_' + data[i].id + '><i class="fa fa-edit"></i></button></td>' +
                             '</tr>';
@@ -485,90 +427,49 @@ $(document).ready(function() {
         $('.formhideshow').show();
         $('.tablehideshow').hide();
         $(".btnhideshow").show();
-        // $("#pay").show();
+        $("#pay").show();
         var id = $(this).attr('id');
         id = (id.split("_"))[1];
         console.log(id);
-        // var municipalty_ward_no = $('#municipalty_ward_no_' + id).html();
-        //  var year = $('#year_' + id).html();
-        // var name = $('#name_' + id).html();
-        //   var ward_no = $('#ward_no_' + id).html();
-        //  var date1 = $('#date1_' + id).html();
-        // var language = $('#language_' + id).html();
+        var municipalty_ward_no = $('#municipalty_ward_no_' + id).html();
+        var year = $('#year_' + id).html();
+        var name = $('#name_' + id).html();
+        var ward_no = $('#ward_no_' + id).html();
+        var date1 = $('#date1_' + id).html();
+        var language = $('#language_' + id).html();
         var sr_number = $('#srno_' + id).html();
         sr_no = sr_number;
         var status = $('#status_' + id).html();
-        // $('#btnprint').val(id);
-        // $('#btnprint2').val(id);
-        // $('#btnapprove').val(id);
-        // $('#btnreject').val(id);
-        // if (role == "admin" || role == "staff") {
-        //     // if (status == "Pending") {
-        //     //     $('#btnapprove').show();
-        //     //     $('#btnreject').show();
-        //     //     $('#btnprint').hide();
-        //     //     $('#btnprint2').hide();
-        //     // }
-        //     // if (status == "Approved") {
-        //     //     $('#btnapprove').hide();
-        //     //     $("#btnreject").hide();
-        //     //     if (language == "english") {
-        //     //         $('#btnprint').show();
-        //     //         $('#btnprint2').hide();
-        //     //     } else {
-        //     //         $('#btnprint2').show();
-        //     //         $('#btnprint').hide();
-        //     //     }
-        //     // }
-        //     // if (status == "Rejected") {
-        //     //     $('#btnapprove').hide();
-        //     //     $("#btnreject").hide();
-        //     //     $('#btnprint').hide();
-        //     //     $('#btnprint2').hide();
-        //     // }
-
-        // }
-
-        $.ajax({
-            type: "POST",
-            url: baseurl + "Occuption_c/showdata_where",
-            data: {
-                id: id,
-
-
-            },
-            dataType: "JSON",
-            async: false,
-            success: function(data) {
-                var data = eval(data);
-
-                var fdateslt = data[0].date.split('-');
-                var date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
-
-                var fdateslt = data[0].from_date.split('-');
-                var form_date = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
-
-
-                var fdateslt = data[0].to_date.split('-');
-                var to_date = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
-
-                $('#name').val(data[0].name);
-                $('#date').val(date1);
-
-                $("#business_name").val(data[0].business_name);
-                $("#business_address").val(data[0].business_address);
-                $("#business_type").val(data[0].business_type);
-                $("#dimension").val(data[0].dimension);
-                $("#charge_type").val(data[0].charge_type);
-                $("#charge").val(data[0].charge);
-                $("#from").val(form_date);
-                $("#to").val(to_date);
-                $("#remarks2").val(data[0].remark2);
-                $("#file_attachother3").val(data[0].cus_photo);
-
+        $('#btnprint').val(id);
+        $('#btnprint2').val(id);
+        $('#btnapprove').val(id);
+        $('#btnreject').val(id);
+        if (role == "admin" || role == "staff") {
+            if (status == "Pending") {
+                $('#btnapprove').show();
+                $('#btnreject').show();
+                $('#btnprint').hide();
+                $('#btnprint2').hide();
             }
-        });
+            if (status == "Approved") {
+                $('#btnapprove').hide();
+                $("#btnreject").hide();
+                if (language == "english") {
+                    $('#btnprint').show();
+                    $('#btnprint2').hide();
+                } else {
+                    $('#btnprint2').show();
+                    $('#btnprint').hide();
+                }
+            }
+            if (status == "Rejected") {
+                $('#btnapprove').hide();
+                $("#btnreject").hide();
+                $('#btnprint').hide();
+                $('#btnprint2').hide();
+            }
 
+        }
         var certificate_type = "Occupation";
         $.ajax({
             type: "POST",
@@ -607,16 +508,16 @@ $(document).ready(function() {
                 $('#file_info_tbody').html(table);
             }
         });
-        // $('#name').val(name);
-        // $('#ward_no').val(ward_no);
-        // $('#munici_ward_no').val(municipalty_ward_no);
-        // $('#year').val(year);
-        // $('#date').val(date1);
-        // $('#language').val(language);
+        $('#name').val(name);
+        $('#ward_no').val(ward_no);
+        $('#munici_ward_no').val(municipalty_ward_no);
+        $('#year').val(year);
+        $('#date').val(date1);
+        $('#language').val(language);
 
         $('#save_update').val(id);
         $('#ref_id').val(id);
-        //   $('#btnprint').val(id);
+        $('#btnprint').val(id);
 
     });
     $(document).on('click', '.closehideshow', function() {
@@ -814,29 +715,6 @@ $(document).ready(function() {
             }
         }
     });
-
-
-    $('#attachment3').ajaxfileupload({
-        'action': baseurl + 'Occuption_c/doc_image_upload3',
-        'onStart': function() { $("#msg3").html("<font color='red'><i class='fa fa-refresh fa-spin fa-3x fa-fw'></i>Please wait file is uploading.....</font>"); },
-        'onComplete': function(response) {
-            if (response == '') {
-                $("#msg3").html("<font color='red'>" + "Error in file upload" + "</font>");
-            } else {
-                $("#file_attachother3").val(response);
-                $("#msg3").html("<font id='doc_image_name1' color='green'>" + response + "</font>");
-                $("#image_photo").html('<img src="' + baseurl + '/assets/images/occuption/photo/' + response + '" width="50" height="50">');
-                // $("#image_name").val(response);
-                /*$('#containerother_kyc1').empty();
-                 var url = getRootUrl();
-                 var img = $('<img />').addClass('img').attr({
-                     'id': 'myImage',
-                     'src': baseurl + 'assets/images/add_call_doc/' + response,
-                     'width': 50,
-                 }).appendTo('#containerother_kyc1');*/
-            }
-        }
-    });
     $(document).on('click', '.btnupload', function(e) {
         e.preventDefault();
         var id = $(this).attr('id');
@@ -895,66 +773,4 @@ $(document).ready(function() {
         $("#file_attachother2").val('');
         $("#msg2").html('');
     });
-
-
-    getMasterSelect("business_type_master", "#business_type");
-
-
-
-
-    function getMasterSelect(table_name, selecter) {
-
-        $.ajax({
-            type: "POST",
-            url: baseurl + "Occuption_c/get_master",
-            data: { table_name: table_name },
-            dataType: "JSON",
-            async: false,
-            success: function(data) {
-                console.log(data);
-                html = '';
-
-                if (table_name == "business_type_master") {
-                    var department = '';
-                    html += '<option selected disabled value="" >Select Business Type</option>';
-                    for (i = 0; i < data.length; i++) {
-                        var id = '';
-                        department = data[i].business_type;
-                        id = data[i].id;
-                        //alert(name);	
-                        html += '<option value="' + id + '">' + department + '</option>';
-                    }
-                }
-
-
-
-
-                $(selecter).html(html);
-            }
-        });
-    }
-
-    $(document).on('change', '#business_type', function() {
-        // alert('dfdf');
-        var business_type = $('#business_type').val();
-
-
-        $.ajax({
-            type: "POST",
-            url: baseurl + "Occuption_c/get_amount",
-
-            data: {
-                business_type: business_type,
-                //table_name: table_name
-            },
-            dataType: "JSON",
-            async: false,
-            success: function(data) {
-
-                $('#charge').val(data);
-            }
-        });
-
-    });
-
 });

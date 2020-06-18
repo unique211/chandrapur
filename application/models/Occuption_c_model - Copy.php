@@ -170,12 +170,28 @@ class Occuption_c_model extends CI_Model
 		$this->db->where('certificate_type', 'Occupation');
 		$result = $this->db->delete('doc_upload');
 
-		$this->db->select('*');
+
 		$this->db->from('doc_upload');
 		$this->db->where('ref_id', $id);
 		$query = $this->db->get();
 
-	
+		date_default_timezone_set('Asia/Kolkata');
+		$date = date("Y-m-d H:i:s");
+		$user_id = $this->session->userid;
+		$table = 'doc_upload';
+		$ref_id = $query->row()->id;
+		$operation_details = "Delete";
+		$remarks = $table . '-' . $operation_details;
+
+		$logs = array(
+			'date_time' => $date,
+			'user_id' => $user_id,
+			'operation_details' => $operation_details,
+			'remarks' => $remarks,
+			'ref_id' => $ref_id,
+			'table_name' => $table,
+		);
+		$this->db->insert('db_logs', $logs);
 		return $result;
 	}
 	function get_unique($table_name, $id)
@@ -196,55 +212,5 @@ class Occuption_c_model extends CI_Model
 		$this->db->where('id', $id);
 		$query = $this->db->get();
 		return $query->result();
-	}
-	function data_get($table)
-	{
-		$this->db->select('*');
-			///$this->db->order_by('department', 'ASC');
-			$this->db->where('status', '1');
-	
-		$hasil = $this->db->get($table);
-		return $hasil->result();
-	}
-
-	function get_amount($business_type)
-	{
-		$this->db->select('amount');
-		$this->db->from('business_type_master');
-			///$this->db->order_by('department', 'ASC');
-			$this->db->where('id', $business_type);
-	
-			$query = $this->db->get();
-
-			$amt=0;
-			if($query->num_rows() >0){
-				$amt=$query->row()->amount;
-			}
-		return $amt;
-	}
-
-	function showalldata_where($id)
-	{
-		
-
-			$user = $this->session->userid;
-			$role = $this->session->role;
-			if ($role == "admin" || $role == "staff") {
-				$this->db->select('occuption_certificate.*');
-				$this->db->from('occuption_certificate');
-				$this->db->where('record_status', '1');
-				$this->db->where('id', $id);
-				$query = $this->db->get();
-			} else {
-				$this->db->select('occuption_certificate.*');
-				$this->db->from('occuption_certificate');
-				$this->db->where('user_id', $user);
-				$this->db->where('record_status', '1');
-				$this->db->where('id', $id);
-				$query = $this->db->get();
-			}
-
-			return $query->result();
-		
 	}
 }

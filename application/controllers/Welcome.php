@@ -111,6 +111,18 @@ class Welcome extends CI_Controller
 			redirect(base_url());
 		}
 	}
+
+	public function business_type()
+	{
+		if (isset($this->session->userid)) {
+			$title['active_menu'] = "oc_bus";
+			$this->session->department_code = "04";
+			$this->load->view('business_type', $title);
+		} else {
+			redirect(base_url());
+		}
+	}
+
 	public function part()
 	{
 		if (isset($this->session->userid)) {

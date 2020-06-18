@@ -39,21 +39,11 @@ class Occuption_c extends CI_Controller
 			if ($this->session->role != "user") {
 				$data = array(
 					'name' => $this->input->post('name'),
-					// 'ward_no' => $this->input->post('ward_no'),
-					// 'municipalty_ward_no' => $this->input->post('municipalty_ward_no'),
-					// 'year' => $this->input->post('year'),
+					'ward_no' => $this->input->post('ward_no'),
+					'municipalty_ward_no' => $this->input->post('municipalty_ward_no'),
+					'year' => $this->input->post('year'),
 					'date' => $this->input->post('date'),
-					//'language' => $this->input->post('language'),
-					'business_name' => $this->input->post('business_name'),
-					'business_address' => $this->input->post('business_address'),
-					'business_type' => $this->input->post('business_type'),
-					'dimension' => $this->input->post('dimension'),
-					'charge_type' => $this->input->post('charge_type'),
-					'charge' => $this->input->post('charge'),
-					'from_date' => $this->input->post('from'),
-					'to_date' => $this->input->post('to'),
-					'remark2' => $this->input->post('remark2'),
-					'cus_photo' => $this->input->post('cus_photo'),
+					'language' => $this->input->post('language'),
 					'year2' => $this->input->post('year2'),
 					'unique_no' => $this->input->post('unique_no'),
 					'sr_no' => $this->input->post('sr_no'),
@@ -62,21 +52,11 @@ class Occuption_c extends CI_Controller
 			} else {
 				$data = array(
 					'name' => $this->input->post('name'),
-					// 'ward_no' => $this->input->post('ward_no'),
-					// 'municipalty_ward_no' => $this->input->post('municipalty_ward_no'),
-					// 'year' => $this->input->post('year'),
+					'ward_no' => $this->input->post('ward_no'),
+					'municipalty_ward_no' => $this->input->post('municipalty_ward_no'),
+					'year' => $this->input->post('year'),
 					'date' => $this->input->post('date'),
-					//'language' => $this->input->post('language'),
-					'business_name' => $this->input->post('business_name'),
-					'business_address' => $this->input->post('business_address'),
-					'business_type' => $this->input->post('business_type'),
-					'dimension' => $this->input->post('dimension'),
-					'charge_type' => $this->input->post('charge_type'),
-					'charge' => $this->input->post('charge'),
-					'from_date' => $this->input->post('from'),
-					'to_date' => $this->input->post('to'),
-					'remark2' => $this->input->post('remark2'),
-					'cus_photo' => $this->input->post('cus_photo'),
+					'language' => $this->input->post('language'),
 					'year2' => $this->input->post('year2'),
 					'unique_no' => $this->input->post('unique_no'),
 					'sr_no' => $this->input->post('sr_no'),
@@ -249,36 +229,6 @@ class Occuption_c extends CI_Controller
 			echo "no file";
 		}
 	}
-
-	public function doc_image_upload3()
-	{
-		$this->load->helper("file");
-		$this->load->helper(array('form', 'url'));
-		$this->load->helper('directory');
-		$this->load->library("upload");
-		//  $id=$this->input->post('id');
-
-
-		if ($_FILES['attachment3']['size'] > 0) {
-			$this->upload->initialize(array(
-				"upload_path" => './assets/images/occuption/photo/',
-				"overwrite" => FALSE,
-				"max_filename" => 300,
-				"remove_spaces" => TRUE,
-				"allowed_types" => '*',
-				"max_size" => 30000,
-			));
-			if (!$this->upload->do_upload('attachment3')) {
-				$error = array('error' => $this->upload->display_errors());
-				echo json_encode($error);
-			}
-			$data = $this->upload->data();
-			$path = $data['file_name'];
-			echo json_encode($path);
-		} else {
-			echo "no file";
-		}
-	}
 	// public function download($fileName = NULL,$unique_no) {
 	public function download($id)
 	{
@@ -305,29 +255,5 @@ class Occuption_c extends CI_Controller
 				redirect(base_url());
 			}
 		}
-	}
-
-	public function get_master()
-	{
-
-		$table_name = $this->input->post('table_name');
-		$data = $this->Occuption_c_model->data_get($table_name);
-		echo json_encode($data);
-	}
-	public function get_amount()
-	{
-
-		$business_type = $this->input->post('business_type');
-		$data = $this->Occuption_c_model->get_amount($business_type);
-		echo json_encode($data);
-	}
-
-	public function showdata_where()
-	{
-		$id	= $this->input->post('id');
-
-		$data1 = $this->Occuption_c_model->showalldata_where($id);
-
-		echo json_encode($data1);
 	}
 }
