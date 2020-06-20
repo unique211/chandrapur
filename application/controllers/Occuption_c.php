@@ -25,6 +25,15 @@ class Occuption_c extends CI_Controller
 		$data1 = $this->Occuption_c_model->showdata_filtered($table_name, $user);
 		echo json_encode($data1);
 	}
+
+	public function showdata_renew()
+	{
+		$table_name   = $this->input->post('table_name');
+	//	$user = $this->input->post('staff_filter');
+		$data1 = $this->Occuption_c_model->showdata_renew($table_name);
+		echo json_encode($data1);
+	}
+
 	public function adddata()
 	{
 		$table_name = $this->input->post('table_name');
@@ -83,13 +92,81 @@ class Occuption_c extends CI_Controller
 					'user_id' => $user_id,
 				);
 			}
+
+			if ($id == "") {
+				$data1 = $this->Occuption_c_model->insertdata($data, $table_name);
+			} else {
+				$data1 = $this->Occuption_c_model->updatedata($data, $table_name, $id);
+				$this->Occuption_c_model->delete_data2($id);
+			}
+
+		} else if ($table_name == 'occuption_receipt') {
+
+			$zone_id=$this->session->zone;
+			$deptId=$this->session->deptId;
+		if($zone_id==null || $zone_id==""){
+			$zone_id="0";
 		}
-		if ($id == "") {
-			$data1 = $this->Occuption_c_model->insertdata($data, $table_name);
-		} else {
-			$data1 = $this->Occuption_c_model->updatedata($data, $table_name, $id);
-			$this->Occuption_c_model->delete_data2($id);
+		if($deptId==null || $deptId==""){
+			$deptId="0";
 		}
+		
+				$data = array(
+					'ref_id' => $this->input->post('ref_id'),
+					'receipt_no' => $this->input->post('receipt_no'),
+					'receipt_date' => $this->input->post('receipt_date'),
+					'collection_no' => $this->input->post('collection_no'),
+					'counter_no' => $this->input->post('counter_no'),
+					'receive_from' => $this->input->post('receive_from'),
+					'amt' => $this->input->post('amt'),
+					'amt_words' => $this->input->post('amt_words'),
+					'function' => $this->input->post('functions'),
+					'mode' => $this->input->post('mode'),
+					'amt2' => $this->input->post('amt2'),
+					'chq_no' => $this->input->post('chq_no'),
+					'chq_date' => $this->input->post('chq_date'),
+					'bank' => $this->input->post('bank'),
+					'bill_no' => $this->input->post('bill_no'),
+				//	'bill_date' => $this->input->post('bill_date'),
+					'details' => $this->input->post('details'),
+					'payble' => $this->input->post('payble'),
+					'receive_amt' => $this->input->post('receive_amt'),
+					'total' => $this->input->post('total'),
+					'receipt_year' => $this->input->post('receipt_year'),
+					'receipt_num' => $this->input->post('receipt_num'),
+
+					'business_type' => $this->input->post('business_type'),
+					'penalty' => $this->input->post('penalty'),
+					'from_date' => $this->input->post('from'),
+					'to_date' => $this->input->post('to'),
+					'rcpt_no' => $this->input->post('rcpt_no'),
+
+					'user_id' => $this->session->userid,
+					'zone_id' => $zone_id,
+					'dept_id' => $deptId,
+				);
+
+				$data1 = $this->Occuption_c_model->insertdata($data, $table_name);
+				$is_renew= $this->input->post('is_renew');
+				$data2=array();
+				if($is_renew==1){
+					$data2=array(
+						'is_rcpt'=>1,
+						'from_date' => $this->input->post('from'),
+						'to_date' => $this->input->post('to'),
+					);
+				}else{
+					$data2=array(
+						'is_rcpt'=>1,
+						
+					);
+				}
+				
+
+				$ref_id= $this->input->post('ref_id');
+				$data_rec2 = $this->Occuption_c_model->updatedata2($data2, 'occuption_certificate', $ref_id);
+		}
+	
 		echo json_encode($data1);
 	}
 
@@ -98,6 +175,15 @@ class Occuption_c extends CI_Controller
 		$table_name	= $this->input->post('table_name');
 
 		$data1 = $this->Occuption_c_model->showalldata($table_name);
+
+		echo json_encode($data1);
+	}
+
+	public function show_renew_data()
+	{
+		$id	= $this->input->post('id');
+
+		$data1 = $this->Occuption_c_model->show_renew_data($id);
 
 		echo json_encode($data1);
 	}
@@ -329,5 +415,23 @@ class Occuption_c extends CI_Controller
 		$data1 = $this->Occuption_c_model->showalldata_where($id);
 
 		echo json_encode($data1);
+	}
+
+	public function getreceipt()
+	{
+		$table_name = $this->input->post('table_name');
+		$id = $this->input->post('id');
+		//  $table_name= "marrige_receipt";
+		// $id="1";
+		$data = $this->Occuption_c_model->getreceipt($table_name, $id);
+		echo json_encode($data);
+	}
+
+	public function print_cash()
+	{
+		//$this->load->library('myfpdf');
+		$where = $this->input->post('btnprint2');
+		$data['record'] = $this->Occuption_c_model->showdatawhere_id($where);
+		$this->load->view('receipt_print_occuption', $data);
 	}
 }

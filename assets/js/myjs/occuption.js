@@ -1,7 +1,6 @@
 $(document).ready(function() {
     var table_name = "occuption_certificate";
-    $('#btnprint2').hide();
-    $('#btnprint').hide();
+
 
     function getServerTime() {
         return $.ajax({ async: false }).getResponseHeader('Date');
@@ -170,8 +169,7 @@ $(document).ready(function() {
 
                     console.log('from false');
                     $('#save_update').val(data);
-                    // $('#btnprint').val(data);
-                    // $('#btnprint2').val(data);
+
                     $('#ref_id').val(data);
                     // successTost("Record Saved Successfully");
 
@@ -179,8 +177,7 @@ $(document).ready(function() {
                     //  successTost("Record Saved Successfully");
                     console.log('from true');
                     $('#save_update').val(id);
-                    // $('#btnprint').val(id);
-                    // $('#btnprint2').val(id);
+
                     $('#ref_id').val(id);
                 }
                 datashow();
@@ -233,13 +230,7 @@ $(document).ready(function() {
                     swal("Empty Documents !!", "Hey, your Form is Saved but any documents not uploaded !!", "error");
                 }
 
-                // if (language == 'marathi') {
-                //     $('#btnprint2').show();
-                //     $('#btnprint').hide();
-                // } else {
-                //     $('#btnprint2').show();
-                //     $('#btnprint').hide();
-                // }
+
 
 
             }
@@ -278,18 +269,13 @@ $(document).ready(function() {
                         '<thead>' +
                         '<tr>' +
                         '<th><font style="font-weight:bold">Id</font></th>' +
-                        // '<th><font style="font-weight:bold">Name</font></th>' +
-                        // '<th><font style="font-weight:bold">Ward_Number</font></th>' +
-                        // '<th><font style="font-weight:bold">Municipality Number</font></th>' +
-                        '<th><font style="font-weight:bold">Year</font></th>' +
+                        '<th><font style="font-weight:bold">Name</font></th>' +
                         '<th><font style="font-weight:bold">Date</font></th>' +
                         '<th><font style="font-weight:bold">Unique Number</font></th>' +
-                        // '<th><font style="font-weight:bold">Status</font></th>' +
-                        // '<th><font style="font-weight:bold">Remarks</font></th>' +
-                        // '<th><font style="font-weight:bold">Document</font></th>' +
-                        // '<th><font style="font-weight:bold">Download</font></th>' +
-                        // '<th style="display:none"><font style="font-weight:bold">language</font></th>' +
                         '<th style="display:none"><font style="font-weight:bold">Sr No</font></th>' +
+                        '<th><font style="font-weight:bold">Receipt</font></th>' +
+                        '<th><font style="font-weight:bold">Certificate</font></th>' +
+
                         '<th class="not-export-column"><font style="font-weight:bold">Operations</font></th>' +
 
                         '</tr>' +
@@ -302,35 +288,33 @@ $(document).ready(function() {
                         var date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
 
                         var doc = "";
-                        if (data[i].status == 'Approved') {
-                            doc = '<button class="btn btn-primary btnupload" type="button" id="' + data[i].id + '" name="btnupload" value="' + data[i].unique_no + '" data-toggle="modal" data-target="#myModal2">Upload</button>';
+
+                        var readonly = '';
+                        var readonly1 = '';
+
+                        if (data[i].is_rcpt == 0) {
+                            readonly = 'disabled';
+                            readonly1 = '';
                         } else {
-                            doc = '';
+                            readonly1 = 'disabled';
+                            readonly = '';
                         }
-                        var download = "";
-                        if (data[i].upload_doc != '') {
-                            download = '<i class="fa fa-download" aria-hidden="true"></i>';
-                        } else {
-                            download = '';
-                        }
+
+
 
                         html += '<tr>' +
                             '<td id="id_' + data[i].id + '">' + data[i].id + '</td>' +
                             '<td id="name_' + data[i].id + '">' + data[i].name + '</td>' +
-                            // '<td id="ward_no_' + data[i].id + '">' + data[i].ward_no + '</td>' +
-                            // '<td id="municipalty_ward_no_' + data[i].id + '">' + data[i].municipalty_ward_no + '</td>' +
-                            // '<td id="year_' + data[i].id + '">' + data[i].year + '</td>' +
                             '<td id="date1_' + data[i].id + '">' + date1 + '</td>' +
                             '<td id="unique_no_' + data[i].id + '">' + data[i].unique_no + '</td>' +
-                            //      '<td id="status_' + data[i].id + '">' + data[i].status + '</td>' +
-                            // '<td id="remark_' + data[i].id + '">' + data[i].remark + '</td>' +
-                            // '<td id="doc_' + data[i].id + '">' + doc + '</td>' +
-                            // '<td id="download_' + data[i].id + '"><a href=' + baseurl + 'Occuption_c/download/' + data[i].id + '>' + download + '</a></td>' +
-                            //  '<td style="display:none" id="language_' + data[i].id + '">' + data[i].language + '</td>' +
+
+
                             '<td style="display:none" id="srno_' + data[i].id + '">' + data[i].sr_no + '</td>' +
+                            '<td class="not-export-column" ><button name="edit" value="edit" class="reciept btn btn-primary" id=' + data[i].id + ' ' + readonly1 + '>Reciept</button></td>' +
+                            '<td class="not-export-column" ><button name="edit" value="edit" class="certificate btn btn-primary" id=' + data[i].id + ' ' + readonly + ' >Certificate</button></td>' +
                             '<td class="not-export-column" ><button name="edit" value="edit" class="edit_data btn btn-success" id=edit_' + data[i].id + '><i class="fa fa-edit"></i></button>';
                         if (role == "admin") {
-                            html += '&nbsp;<button name="delete" value="Delete" class="delete_data btn btn-danger" id=delete_' + data[i].id + '><i class="fa fa-trash"></i></button></td>';
+                            //      html += '&nbsp;<button name="delete" value="Delete" class="delete_data btn btn-danger" id=delete_' + data[i].id + '><i class="fa fa-trash"></i></button></td>';
                         }
 
                         html += '</tr>';
@@ -344,6 +328,76 @@ $(document).ready(function() {
                 }
 
             });
+
+
+            $.ajax({
+                type: "POST",
+                url: baseurl + "Occuption_c/showdata_renew",
+                data: {
+                    table_name: table_name,
+
+                },
+                dataType: "JSON",
+                async: false,
+                success: function(data) {
+                    // console.log('data'+data);
+                    var data = eval(data);
+
+
+                    var html = '';
+
+                    html += '<table id="myTable2" class="table table-striped">' +
+                        '<thead>' +
+                        '<tr>' +
+                        '<th><font style="font-weight:bold">Id</font></th>' +
+                        '<th><font style="font-weight:bold">Name</font></th>' +
+                        '<th><font style="font-weight:bold">Date</font></th>' +
+                        '<th><font style="font-weight:bold">Unique Number</font></th>' +
+                        '<th style="display:none"><font style="font-weight:bold">Sr No</font></th>' +
+                        '<th><font style="font-weight:bold">Re-New Receipt</font></th>' +
+
+
+
+
+                        '</tr>' +
+                        '</thead>' +
+                        '<tbody>';
+                    for (var i = 0; i < data.length; i++) {
+
+                        var fdateval = data[i].date;
+                        var fdateslt = fdateval.split('-');
+                        var date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+                        var doc = "";
+
+                        var readonly = '';
+                        var readonly1 = '';
+
+
+
+
+                        html += '<tr>' +
+                            '<td id="id_' + data[i].id + '">' + data[i].id + '</td>' +
+                            '<td id="name_' + data[i].id + '">' + data[i].name + '</td>' +
+                            '<td id="date1_' + data[i].id + '">' + date1 + '</td>' +
+                            '<td id="unique_no_' + data[i].id + '">' + data[i].unique_no + '</td>' +
+
+                            '<td style="display:none" id="srno_' + data[i].id + '">' + data[i].sr_no + '</td>' +
+                            '<td class="not-export-column" ><button name="edit" value="edit" class="reciept2 btn btn-primary" id=' + data[i].id + ' >Re-New Reciept</button></td>';
+
+
+                        html += '</tr>';
+
+                    }
+                    html += '</tbody></table>';
+
+                    $('#show_master2').html(html);
+                    $('#myTable2').DataTable({});
+                }
+            });
+
+
+
         } else {
             $.ajax({
                 type: "POST",
@@ -365,15 +419,8 @@ $(document).ready(function() {
                         '<tr>' +
                         '<th><font style="font-weight:bold">Id</font></th>' +
                         '<th><font style="font-weight:bold">Name</font></th>' +
-                        // '<th><font style="font-weight:bold">Ward_Number</font></th>' +
-                        // '<th><font style="font-weight:bold">Municipality Number</font></th>' +
-                        // '<th><font style="font-weight:bold">Year</font></th>' +
                         '<th><font style="font-weight:bold">Date</font></th>' +
                         '<th><font style="font-weight:bold">Unique Number</font></th>' +
-                        //   '<th><font style="font-weight:bold">Status</font></th>' +
-                        // '<th><font style="font-weight:bold">Remarks</font></th>' +
-                        // '<th><font style="font-weight:bold">Download</font></th>' +
-                        // '<th style="display:none"><font style="font-weight:bold">language</font></th>' +
                         '<th style="display:none"><font style="font-weight:bold">Sr No</font></th>' +
                         '<th class="not-export-column"><font style="font-weight:bold">Operations</font></th>' +
 
@@ -397,15 +444,8 @@ $(document).ready(function() {
                         html += '<tr>' +
                             '<td id="id_' + data[i].id + '">' + data[i].id + '</td>' +
                             '<td id="name_' + data[i].id + '">' + data[i].name + '</td>' +
-                            // '<td id="ward_no_' + data[i].id + '">' + data[i].ward_no + '</td>' +
-                            // '<td id="municipalty_ward_no_' + data[i].id + '">' + data[i].municipalty_ward_no + '</td>' +
-                            // '<td id="year_' + data[i].id + '">' + data[i].year + '</td>' +
                             '<td id="date1_' + data[i].id + '">' + date1 + '</td>' +
                             '<td id="unique_no_' + data[i].id + '">' + data[i].unique_no + '</td>' +
-                            //  '<td id="status_' + data[i].id + '">' + data[i].status + '</td>' +
-                            // '<td id="remark_' + data[i].id + '">' + data[i].remark + '</td>' +
-                            // '<td id="download_' + data[i].id + '"><a href=' + baseurl + 'Occuption_c/download/' + data[i].id + '>' + download + '</a></td>' +
-                            // '<td style="display:none" id="language_' + data[i].id + '">' + data[i].language + '</td>' +
                             '<td style="display:none" id="srno_' + data[i].id + '">' + data[i].sr_no + '</td>' +
                             '<td class="not-export-column" ><button name="edit" value="edit" class="edit_data btn btn-success" id=edit_' + data[i].id + '><i class="fa fa-edit"></i></button></td>' +
                             '</tr>';
@@ -485,57 +525,21 @@ $(document).ready(function() {
         $('.formhideshow').show();
         $('.tablehideshow').hide();
         $(".btnhideshow").show();
-        // $("#pay").show();
+
         var id = $(this).attr('id');
         id = (id.split("_"))[1];
         console.log(id);
-        // var municipalty_ward_no = $('#municipalty_ward_no_' + id).html();
-        //  var year = $('#year_' + id).html();
-        // var name = $('#name_' + id).html();
-        //   var ward_no = $('#ward_no_' + id).html();
-        //  var date1 = $('#date1_' + id).html();
-        // var language = $('#language_' + id).html();
+
         var sr_number = $('#srno_' + id).html();
         sr_no = sr_number;
         var status = $('#status_' + id).html();
-        // $('#btnprint').val(id);
-        // $('#btnprint2').val(id);
-        // $('#btnapprove').val(id);
-        // $('#btnreject').val(id);
-        // if (role == "admin" || role == "staff") {
-        //     // if (status == "Pending") {
-        //     //     $('#btnapprove').show();
-        //     //     $('#btnreject').show();
-        //     //     $('#btnprint').hide();
-        //     //     $('#btnprint2').hide();
-        //     // }
-        //     // if (status == "Approved") {
-        //     //     $('#btnapprove').hide();
-        //     //     $("#btnreject").hide();
-        //     //     if (language == "english") {
-        //     //         $('#btnprint').show();
-        //     //         $('#btnprint2').hide();
-        //     //     } else {
-        //     //         $('#btnprint2').show();
-        //     //         $('#btnprint').hide();
-        //     //     }
-        //     // }
-        //     // if (status == "Rejected") {
-        //     //     $('#btnapprove').hide();
-        //     //     $("#btnreject").hide();
-        //     //     $('#btnprint').hide();
-        //     //     $('#btnprint2').hide();
-        //     // }
 
-        // }
 
         $.ajax({
             type: "POST",
             url: baseurl + "Occuption_c/showdata_where",
             data: {
                 id: id,
-
-
             },
             dataType: "JSON",
             async: false,
@@ -565,6 +569,9 @@ $(document).ready(function() {
                 $("#to").val(to_date);
                 $("#remarks2").val(data[0].remark2);
                 $("#file_attachother3").val(data[0].cus_photo);
+
+                $("#msg3").html("<font id='doc_image_name1' color='green'>" + data[0].cus_photo + "</font>");
+                $("#image_photo").html('<img src="' + baseurl + '/assets/images/occuption/photo/' + data[0].cus_photo + '" width="50" height="50">');
 
             }
         });
@@ -607,12 +614,7 @@ $(document).ready(function() {
                 $('#file_info_tbody').html(table);
             }
         });
-        // $('#name').val(name);
-        // $('#ward_no').val(ward_no);
-        // $('#munici_ward_no').val(municipalty_ward_no);
-        // $('#year').val(year);
-        // $('#date').val(date1);
-        // $('#language').val(language);
+
 
         $('#save_update').val(id);
         $('#ref_id').val(id);
@@ -622,12 +624,17 @@ $(document).ready(function() {
     $(document).on('click', '.closehideshow', function() {
         $('#master_form')[0].reset();
         $('#save_update').val('');
-        $('#btnprint').val('');
-        $('#btnprint2').val('');
+
         $(".tablehideshow").show();
         $(".formhideshow").hide();
         $('#file_info_tbody').html('');
         $('#row').val("0");
+        $("#form3").hide();
+        $("#form2").hide();
+        $("#form1").show();
+        $("#msg3").html('');
+        $("#image_photo").html('');
+        datashow();
     });
     $(".btnhideshow").click(function() {
         $("#pay").hide();
@@ -638,8 +645,7 @@ $(document).ready(function() {
         if (id == "") {
             get_appmaxid();
         }
-        $('#btnprint2').hide();
-        $('#btnprint').hide();
+
     });
     $('#attachment').ajaxfileupload({
         'action': baseurl + 'Occuption_c/doc_image_upload',
@@ -743,13 +749,7 @@ $(document).ready(function() {
                     $('#btnapprove').hide();
                     $("#btnreject").hide();
                     datashow();
-                    if (language == 'marathi') {
-                        $('#btnprint2').show();
-                        $('#btnprint').hide();
-                    } else {
-                        $('#btnprint').show();
-                        $('#btnprint2').hide();
-                    }
+
                 } else {
                     errorTost("Something Wrong", "error");
                 }
@@ -956,5 +956,776 @@ $(document).ready(function() {
         });
 
     });
+
+    $(document).on('click', ".reciept", function() {
+        $('#master_form2')[0].reset();
+        var date = new Date(getServerTime());
+        date = date.toString('dd/MM/yyyy');
+        $(".date").val(date);
+        $("#bill_date").val(date);
+        $("#receipt_date").val(date);
+        $('.date').datepicker({
+            'todayHighlight': true,
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+        });
+        $('#receipt_id').val('');
+        $('#ref_id4').val('');
+        $('.formhideshow').show();
+        $('.tablehideshow').hide();
+        //   $(".btnhideshow").show();
+        $('#form1').hide();
+        $('#form2').show();
+        $('#form3').show();
+
+        $("#r_from_dt").prop('readonly', true);
+        $("#r_to_dt").prop('readonly', true);
+
+        $('#btnprint2').hide();
+        $('#formbtn4').show();
+
+        var id = $(this).attr('id');
+        $('#ref_id4').val(id);
+        var isNew = true;
+        $.ajax({
+            type: "POST",
+            url: baseurl + "Occuption_c/getreceipt",
+            data: {
+                table_name: 'occuption_receipt',
+                id: id,
+            },
+            dataType: "JSON",
+            async: false,
+            success: function(data) {
+
+                var data = eval(data);
+                for (var i = 0; i < data.length; i++) {
+
+
+                    var fdateval = data[i].receipt_date;
+                    var fdateslt = fdateval.split('-');
+                    var receipt_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                    var fdateval = data[i].chq_date;
+                    var fdateslt = fdateval.split('-');
+                    var chq_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                    var fdateval = data[i].bill_date;
+                    var fdateslt = fdateval.split('-');
+                    var bill_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+                    var fdateval = data[i].from_date;
+                    var fdateslt = fdateval.split('-');
+                    var from_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                    var fdateval = data[i].to_date;
+                    var fdateslt = fdateval.split('-');
+                    var to_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+                    if (receipt_date1 == "00/00/0000") {
+                        receipt_date1 = "";
+                    }
+                    if (chq_date1 == "00/00/0000") {
+                        chq_date1 = "";
+                    }
+                    if (bill_date1 == "00/00/0000") {
+                        bill_date1 = "";
+                    }
+
+                    if (from_date1 == "00/00/0000") {
+                        from_date1 = "";
+                    }
+                    if (to_date1 == "00/00/0000") {
+                        to_date1 = "";
+                    }
+                    $('#receipt_id').val(data[i].id);
+                    $('#btnprint2').val(data[i].id);
+                    $('#receipt_no').val(data[i].receipt_no);
+                    $('#receipt_date').val(receipt_date1);
+                    $('#collection_no').val(data[i].collection_no);
+                    $('#counter_no').val(data[i].counter_no);
+                    $('#receive_from').val(data[i].receive_from);
+                    $('#amt').val(data[i].amt);
+                    $('#amt_words').val(data[i].amt_words);
+                    $('#function').val(data[i].function);
+                    $('#mode').val(data[i].mode);
+                    $('#amt2').val(data[i].amt2);
+                    $('#chq_no').val(data[i].chq_no);
+                    $('#chq_date').val(chq_date1);
+                    $('#bank_name').val(data[i].bank);
+                    $('#bill_no').val(data[i].bill_no);
+                    $('#bill_date').val(bill_date1);
+                    $('#details').val(data[i].details);
+                    $('#payble').val(data[i].payble);
+                    $('#receive_amt').val(data[i].receive_amt);
+                    $('#total').val(data[i].total);
+
+                    $('#rec_business_type').val(data[i].business_type);
+                    $('#penalty').val(data[i].penalty);
+                    $('#r_from_dt').val(from_date1);
+                    $('#r_to_dt').val(to_date1);
+                    $('#is_renew').val(1);
+                    isNew = false;
+                }
+            }
+        });
+        //  alert(isNew);
+        if (isNew) {
+            console.log('from else of receipt');
+            //retrive receive from 
+            $.ajax({
+                type: "POST",
+                url: baseurl + "Occuption_c/showdata_where",
+                data: {
+
+                    id: id,
+                },
+                dataType: "JSON",
+                async: false,
+                success: function(data) {
+                    var data = eval(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $('#receive_from').val(data[i].name);
+                        $('#function').val('Business Occuption Certificate');
+                        $('#details').val('Business Occuption Certificate');
+                        // to set amount
+                        $('#collection_no').val(data[i].remark2);
+
+                        var fdateslt = data[i].from_date.split('-');
+                        var form_date = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+
+                        var fdateslt = data[i].to_date.split('-');
+                        var to_date = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                        $('#r_from_dt').val(form_date);
+                        $('#r_to_dt').val(to_date);
+                        $('#rec_business_type').val(data[i].business_type_name);
+                        $('#is_renew').val(0);
+                        var rs = data[i].charge;
+
+                        $('#amt').val(rs);
+                        $('#amt_words').val(convertNumberToWords(rs));
+                        $('#amt2').val(rs);
+                        $('#payble').val(rs);
+                        $('#receive_amt').val(rs);
+                        $('#total').val(rs);
+
+                        count_receipt_total();
+                    }
+                }
+            });
+
+            var d = new Date(getServerTime());
+            //var year = d.getFullYear();
+            var year = getCurrentFinancialYear();
+            //   alert(year);
+            var mid = 'CCMC';
+            var receiptno = 14160;
+            $.ajax({
+                type: 'POST',
+                url: baseurl + "Marrige/getMaxReceipt",
+                data: {
+                    year: year
+                },
+                dataType: "JSON",
+                async: false,
+                success: function(data) {
+                    console.log('data getbillno');
+                    console.log(data);
+                    var data = eval(data);
+                    if (data.last_receipt == null) {
+                        receiptno = 0;
+                    } else
+                        receiptno = parseInt(data.last_receipt);
+                },
+                error: function() {}
+            });
+            console.log('receipt_no' + receiptno);
+
+            receiptno += 1;
+            receiptno = '' + receiptno;
+            while (receiptno.length < 5) {
+                receiptno = '0' + receiptno;
+            }
+            console.log(receiptno);
+            receiptno = year + mid + receiptno;
+            console.log(receiptno);
+            $('#receipt_no').val(receiptno);
+            $('#bill_no').val(receiptno);
+        }
+    });
+
+    $(document).on('click', ".reciept2", function() {
+        $('#master_form2')[0].reset();
+        var date = new Date(getServerTime());
+        date = date.toString('dd/MM/yyyy');
+        $(".date").val(date);
+        $("#bill_date").val(date);
+        $("#receipt_date").val(date);
+        $('.date').datepicker({
+            'todayHighlight': true,
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+        });
+        $('#receipt_id').val('');
+        $('#ref_id4').val('');
+        $('.formhideshow').show();
+        $('.tablehideshow').hide();
+        //   $(".btnhideshow").show();
+        $('#form1').hide();
+        $('#form2').show();
+        $('#form3').show();
+
+        $("#r_from_dt").prop('readonly', false);
+        $("#r_to_dt").prop('readonly', false);
+        $('#btnprint2').hide();
+        $('#formbtn4').show();
+        var id = $(this).attr('id');
+        //   alert(id);
+        $('#ref_id4').val(id);
+        var isNew = true;
+        $.ajax({
+            type: "POST",
+            url: baseurl + "Occuption_c/getreceipt",
+            data: {
+                table_name: 'occuption_receipt',
+                id: id,
+            },
+            dataType: "JSON",
+            async: false,
+            success: function(data) {
+
+                var data = eval(data);
+                for (var i = 0; i < data.length; i++) {
+
+
+                    var fdateval = data[i].receipt_date;
+                    var fdateslt = fdateval.split('-');
+                    var receipt_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                    var fdateval = data[i].chq_date;
+                    var fdateslt = fdateval.split('-');
+                    var chq_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                    var fdateval = data[i].bill_date;
+                    var fdateslt = fdateval.split('-');
+                    var bill_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+                    var fdateval = data[i].from_date;
+                    var fdateslt = fdateval.split('-');
+                    var from_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                    var fdateval = data[i].to_date;
+                    var fdateslt = fdateval.split('-');
+                    var to_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+                    if (receipt_date1 == "00/00/0000") {
+                        receipt_date1 = "";
+                    }
+                    if (chq_date1 == "00/00/0000") {
+                        chq_date1 = "";
+                    }
+                    if (bill_date1 == "00/00/0000") {
+                        bill_date1 = "";
+                    }
+
+                    if (from_date1 == "00/00/0000") {
+                        from_date1 = "";
+                    }
+                    if (to_date1 == "00/00/0000") {
+                        to_date1 = "";
+                    }
+                    $('#receipt_id').val(data[i].id);
+                    $('#btnprint2').val(data[i].id);
+                    $('#receipt_no').val(data[i].receipt_no);
+                    $('#receipt_date').val(receipt_date1);
+                    $('#collection_no').val(data[i].collection_no);
+                    $('#counter_no').val(data[i].counter_no);
+                    $('#receive_from').val(data[i].receive_from);
+                    $('#amt').val(data[i].amt);
+                    $('#amt_words').val(data[i].amt_words);
+                    $('#function').val(data[i].function);
+                    $('#mode').val(data[i].mode);
+                    $('#amt2').val(data[i].amt2);
+                    $('#chq_no').val(data[i].chq_no);
+                    $('#chq_date').val(chq_date1);
+                    $('#bank_name').val(data[i].bank);
+                    $('#bill_no').val(data[i].bill_no);
+                    $('#bill_date').val(bill_date1);
+                    $('#details').val(data[i].details);
+                    $('#payble').val(data[i].payble);
+                    $('#receive_amt').val(data[i].receive_amt);
+                    $('#total').val(data[i].total);
+
+                    $('#rcpt_no').val(data[i].rcpt_no);
+
+                    $('#rec_business_type').val(data[i].business_type);
+                    $('#penalty').val(data[i].penalty);
+                    $('#r_from_dt').val(from_date1);
+                    $('#r_to_dt').val(to_date1);
+                    $('#is_renew').val(1);
+                    isNew = false;
+
+                    $('#r_to_dt #r_from_dt').datepicker({
+                        'todayHighlight': true,
+                        format: 'dd/mm/yyyy',
+                        autoclose: true,
+                    });
+
+                }
+            }
+        });
+
+
+        if (isNew) {
+            console.log('from else of receipt');
+            //retrive receive from 
+            $.ajax({
+                type: "POST",
+                url: baseurl + "Occuption_c/showdata_where",
+                data: {
+
+                    id: id,
+                },
+                dataType: "JSON",
+                async: false,
+                success: function(data) {
+                    var data = eval(data);
+                    for (var i = 0; i < data.length; i++) {
+                        $('#receive_from').val(data[i].name);
+                        $('#function').val('Business Occuption Certificate');
+                        $('#details').val('Business Occuption Certificate');
+                        // to set amount
+                        $('#collection_no').val(data[i].remark2);
+
+                        var fdateslt = data[i].from_date.split('-');
+                        var form_date = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+
+                        var fdateslt = data[i].to_date.split('-');
+                        var to_date = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                        $('#r_from_dt').val(form_date);
+                        $('#r_to_dt').val(to_date);
+                        $('#rec_business_type').val(data[i].business_type_name);
+
+                        var rs = data[i].charge;
+
+                        $('#amt').val(rs);
+                        $('#amt_words').val(convertNumberToWords(rs));
+                        $('#amt2').val(rs);
+                        $('#payble').val(rs);
+                        $('#receive_amt').val(rs);
+                        $('#total').val(rs);
+                        $('#is_renew').val(0);
+                        count_receipt_total();
+                    }
+                }
+            });
+
+            var d = new Date(getServerTime());
+            var year = d.getFullYear();
+
+            var mid = 'CCMC';
+            var receiptno = 14160;
+            $.ajax({
+                type: 'POST',
+                url: baseurl + "Marrige/getMaxReceipt",
+                data: {
+                    year: year
+                },
+                dataType: "JSON",
+                async: false,
+                success: function(data) {
+                    console.log('data getbillno');
+                    console.log(data);
+                    var data = eval(data);
+                    if (data.last_receipt == null) {
+                        receiptno = 0;
+                    } else
+                        receiptno = parseInt(data.last_receipt);
+                },
+                error: function() {}
+            });
+            console.log('receipt_no' + receiptno);
+
+            receiptno += 1;
+            receiptno = '' + receiptno;
+            while (receiptno.length < 5) {
+                receiptno = '0' + receiptno;
+            }
+            console.log(receiptno);
+            receiptno = year + mid + receiptno;
+            console.log(receiptno);
+            $('#receipt_no').val(receiptno);
+            $('#bill_no').val(receiptno);
+        }
+    });
+
+
+
+    function count_receipt_total() {
+        var rs = $('#amt').val();
+        var penalty = $('#penalty').val();
+        var qty = $('#counter_no').val();
+
+        var t1 = parseFloat(rs) * parseFloat(qty);
+        var t2 = parseFloat(t1) + parseFloat(penalty);
+
+
+        $('#amt2').val(t2);
+        $('#payble').val(t2);
+        $('#receive_amt').val(t2);
+        $('#total').val(t2);
+    }
+
+    $(document).on('blur', "#amt", function() {
+        count_receipt_total();
+    });
+    $(document).on('blur', "#penalty", function() {
+        count_receipt_total();
+    });
+    $(document).on('blur', "#counter_no", function() {
+        count_receipt_total();
+    });
+
+    function getCurrentFinancialYear() {
+        var fiscalyear = "";
+        var today = new Date();
+        if ((today.getMonth() + 1) <= 3) {
+            fiscalyear = today.getFullYear() - 1;
+        } else {
+            fiscalyear = today.getFullYear();
+        }
+        return fiscalyear
+    }
+
+
+    function convertNumberToWords(amount) {
+        var words = new Array();
+        words[0] = '';
+        words[1] = 'One';
+        words[2] = 'Two';
+        words[3] = 'Three';
+        words[4] = 'Four';
+        words[5] = 'Five';
+        words[6] = 'Six';
+        words[7] = 'Seven';
+        words[8] = 'Eight';
+        words[9] = 'Nine';
+        words[10] = 'Ten';
+        words[11] = 'Eleven';
+        words[12] = 'Twelve';
+        words[13] = 'Thirteen';
+        words[14] = 'Fourteen';
+        words[15] = 'Fifteen';
+        words[16] = 'Sixteen';
+        words[17] = 'Seventeen';
+        words[18] = 'Eighteen';
+        words[19] = 'Nineteen';
+        words[20] = 'Twenty';
+        words[30] = 'Thirty';
+        words[40] = 'Forty';
+        words[50] = 'Fifty';
+        words[60] = 'Sixty';
+        words[70] = 'Seventy';
+        words[80] = 'Eighty';
+        words[90] = 'Ninety';
+        amount = amount.toString();
+        var atemp = amount.split(".");
+        var number = atemp[0].split(",").join("");
+        var n_length = number.length;
+        var words_string = "";
+        if (n_length <= 9) {
+            var n_array = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            var received_n_array = new Array();
+            for (var i = 0; i < n_length; i++) {
+                received_n_array[i] = number.substr(i, 1);
+            }
+            for (var i = 9 - n_length, j = 0; i < 9; i++, j++) {
+                n_array[i] = received_n_array[j];
+            }
+            for (var i = 0, j = 1; i < 9; i++, j++) {
+                if (i == 0 || i == 2 || i == 4 || i == 7) {
+                    if (n_array[i] == 1) {
+                        n_array[j] = 10 + parseInt(n_array[j]);
+                        n_array[i] = 0;
+                    }
+                }
+            }
+            value = "";
+            for (var i = 0; i < 9; i++) {
+                if (i == 0 || i == 2 || i == 4 || i == 7) {
+                    value = n_array[i] * 10;
+                } else {
+                    value = n_array[i];
+                }
+                if (value != 0) {
+                    words_string += words[value] + " ";
+                }
+                if ((i == 1 && value != 0) || (i == 0 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Crores ";
+                }
+                if ((i == 3 && value != 0) || (i == 2 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Lakhs ";
+                }
+                if ((i == 5 && value != 0) || (i == 4 && value != 0 && n_array[i + 1] == 0)) {
+                    words_string += "Thousand ";
+                }
+                if (i == 6 && value != 0 && (n_array[i + 1] != 0 && n_array[i + 2] != 0)) {
+                    words_string += "Hundred and ";
+                } else if (i == 6 && value != 0) {
+                    words_string += "Hundred ";
+                }
+            }
+            words_string = words_string.split("  ").join(" ");
+        }
+        return words_string;
+    }
+
+
+    //-----------------------------submit receipt-----------------------------
+    $(document).on("submit", "#master_form2", function(e) {
+        e.preventDefault();
+        var table_name = "occuption_receipt";
+        var id = $('#receipt_id').val();
+        var ref_id = $('#ref_id4').val();
+        var receipt_no = $('#receipt_no').val();
+        var receipt_date1 = $('#receipt_date').val();
+        var collection_no = $('#collection_no').val();
+        var counter_no = $('#counter_no').val();
+        var receive_from = $('#receive_from').val();
+        var amt = $('#amt').val();
+        var amt_words = $('#amt_words').val();
+        var functions = $('#function').val();
+        var mode = $('#mode').val();
+        var amt2 = $('#amt2').val();
+        var chq_no = $('#chq_no').val();
+        var chq_date1 = $('#chq_date').val();
+        var bank = $('#bank_name').val();
+        var bill_no = $('#bill_no').val();
+        //  var bill_date1 = $('#bill_date').val();
+        var details = $('#details').val();
+        var payble = $('#payble').val();
+        var receive_amt = $('#receive_amt').val();
+        var total = $('#total').val();
+        var dateslt = receipt_date1.split('/');
+        var receipt_date = dateslt[2] + '-' + dateslt[1] + '-' + dateslt[0];
+        var dateslt = chq_date1.split('/');
+        var chq_date = dateslt[2] + '-' + dateslt[1] + '-' + dateslt[0];
+        // var dateslt = bill_date1.split('/');
+        // var bill_date = dateslt[2] + '-' + dateslt[1] + '-' + dateslt[0];
+        var reg_parts = receipt_no.split("CCMC");
+        var receipt_year = reg_parts[0];
+        var receipt_num = reg_parts[1];
+
+        var business_type = $('#rec_business_type').val();
+        var penalty = $('#penalty').val();
+        var from1 = $('#r_from_dt').val();
+        var to1 = $('#r_to_dt').val();
+        var rcpt_no = $('#rcpt_no').val();
+        if (rcpt_no == 0) {
+            rcpt_no = 1;
+        } else {
+            rcpt_no = parseInt(rcpt_no) + 1;
+        }
+
+        var is_renew = $('#is_renew').val();
+
+        //	alert(is_renew);
+
+
+        var dateslt = from1.split('/');
+        var from = dateslt[2] + '-' + dateslt[1] + '-' + dateslt[0];
+
+        var dateslt = to1.split('/');
+        var to = dateslt[2] + '-' + dateslt[1] + '-' + dateslt[0];
+
+        $.ajax({
+            type: "POST",
+            url: baseurl + "Occuption_c/adddata",
+            data: {
+                id: id,
+                receipt_year: receipt_year,
+                receipt_num: receipt_num,
+                ref_id: ref_id,
+                receipt_no: receipt_no,
+                receipt_date: receipt_date,
+                collection_no: collection_no,
+                counter_no: counter_no,
+                receive_from: receive_from,
+                amt: amt,
+                amt_words: amt_words,
+                functions: functions,
+                mode: mode,
+                amt2: amt2,
+                chq_no: chq_no,
+                chq_date: chq_date,
+                bank: bank,
+                bill_no: bill_no,
+                //   bill_date: bill_date,
+                details: details,
+                payble: payble,
+                receive_amt: receive_amt,
+                total: total,
+
+                business_type: business_type,
+                penalty: penalty,
+                from: from,
+                to: to,
+                rcpt_no: rcpt_no,
+                is_renew: is_renew,
+
+                table_name: table_name,
+            },
+            dataType: "JSON",
+            async: false,
+            success: function(data) {
+                console.log(data);
+                if (data != "") {
+                    successTost("Record Saved Successfully");
+                    $('#formbtn4').hide();
+                    $('#btnprint2').show();
+                    $('#btnprint2').val(data);
+                    $('#receipt_id').val(data);
+                    console.log(data);
+                } else {
+                    errorTost("Something Wrong", "error");
+                }
+            }
+        });
+    });
+    //-----------------------------submit receipt-----------------------------
+
+    //------------------------ Certificate ---------------------------------------------
+    $(document).on('click', ".certificate", function() {
+        $('.tablehideshow').hide();
+        $('.formhideshow').show();
+        $("#form1").hide();
+        $("#form2").hide();
+        $("#form3").show();
+
+        $("#c_auto_id").html('');
+        $("#c_auto_id2").html('');
+        $("#c_today").html('');
+        $("#c_today2").html('');
+        $("#c_name").html('');
+        $("#c_photo").html('');
+        $("#c_business_name").html('');
+        $("#c_business_address").html('');
+        $("#c_business_type").html('');
+        $("#c_charge_type").html('');
+        $("#c_charge").html('');
+        $("#c_tot_charge").html('');
+        $("#c_tot_charge2").html('');
+        $("#c_from").html('');
+        $("#c_to").html('');
+        $("#c_remark").html('');
+        $("#c_dimension").html('');
+
+
+        table_name = "occuption_certificate";
+        var id = $(this).attr('id');
+
+        $.ajax({
+            type: "POST",
+            url: baseurl + "Occuption_c/showdata_where",
+            data: {
+                table_name: table_name,
+                id: id,
+            },
+            dataType: "JSON",
+            async: false,
+            success: function(data) {
+
+                for (var i = 0; i < data.length; i++) {
+                    var fdateslt = data[0].from_date.split('-');
+                    var form_date = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+
+                    var fdateslt = data[0].to_date.split('-');
+                    var to_date = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+                    var date = new Date();
+                    date = date.toString('dd/MM/yyyy');
+
+                    $("#c_auto_id").html(data[i].id);
+                    $("#c_auto_id2").html(data[i].id);
+                    $("#c_today").html(date);
+                    $("#c_today2").html(date);
+                    $("#c_name").html(data[i].name);
+                    $("#c_photo").html('<img src="' + baseurl + '/assets/images/occuption/photo/' + data[i].cus_photo + '" width="95px" height="125px">');
+                    $("#c_business_name").html(data[i].business_name);
+                    $("#c_business_address").html(data[i].business_address);
+                    $("#c_business_type").html(data[i].business_type);
+                    $("#c_charge_type").html(data[i].charge_type);
+                    $("#c_charge").html(data[i].charge);
+                    $("#c_tot_charge").html(data[i].charge);
+                    $("#c_tot_charge2").html(data[i].charge);
+                    $("#c_from").html(form_date);
+                    $("#c_to").html(to_date);
+                    $("#c_remark").html(data[i].remark2);
+                    $("#c_dimension").html(data[i].dimension);
+
+
+                    if (data[i].is_rcpt == 1) {
+                        $.ajax({
+                            type: "POST",
+                            url: baseurl + "Occuption_c/show_renew_data",
+                            data: {
+
+                                id: id,
+                            },
+                            dataType: "JSON",
+                            async: false,
+                            success: function(data) {
+                                var data = eval(data);
+
+                                // var fdateslt = data[0].date.split('-');
+                                // var date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                                //	alert(data.length);
+                                var html = '';
+                                for (var i = 0; i < data.length; i++) {
+
+                                    var sr = i + 1;
+                                    var fdateval = data[i].from_date;
+                                    var fdateslt = fdateval.split('-');
+                                    var from_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+                                    var fdateval = data[i].to_date;
+                                    var fdateslt = fdateval.split('-');
+                                    var to_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+                                    var fdateval = data[i].receipt_date;
+                                    var fdateslt = fdateval.split('-');
+                                    var receipt_date1 = fdateslt[2] + '/' + fdateslt[1] + '/' + fdateslt[0];
+
+
+                                    if (from_date1 == "00/00/0000") {
+                                        from_date1 = "";
+                                    }
+                                    if (to_date1 == "00/00/0000") {
+                                        to_date1 = "";
+                                    }
+
+                                    if (receipt_date1 == "00/00/0000") {
+                                        receipt_date1 = "";
+                                    }
+                                    html += '<tr>' +
+                                        '<td id="id_' + data[i].id + '" style="border:1px solid #000;">' + sr + '</td>' +
+                                        '<td id="name_' + data[i].id + '" style="border:1px solid #000;">' + data[i].receipt_no + '</td>' +
+                                        '<td id="date1_' + data[i].id + '" style="border:1px solid #000;">' + receipt_date1 + '</td>' +
+                                        '<td id="unique_no_' + data[i].id + '" style="border:1px solid #000;">' + data[i].amt + '</td>' +
+                                        '<td id="srno_' + data[i].id + '" style="border:1px solid #000;">' + data[i].penalty + '</td>' +
+                                        '<td id="srno_' + data[i].id + '" style="border:1px solid #000;">' + data[i].total + '</td>' +
+                                        '<td id="srno_' + data[i].id + '" style="border:1px solid #000;">' + from_date1 + '</td>' +
+                                        '<td id="srno_' + data[i].id + '" style="border:1px solid #000;">' + to_date1 + '</td>' +
+                                        '<td id="srno_' + data[i].id + '" style="border:1px solid #000;"></td>' +
+                                        '</tr>';
+                                }
+                                $("#c_table_renew").html(html);
+                            }
+                        });
+                    } else {
+                        $("#c_table_renew").html('');
+                    }
+                    //  $('.date_of_issue').html(date_of_issue1);
+                }
+            }
+        });
+    });
+    //------------------------end of Certificate ----------------------------------------
 
 });
