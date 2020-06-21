@@ -976,7 +976,7 @@ $(document).ready(function() {
         //   $(".btnhideshow").show();
         $('#form1').hide();
         $('#form2').show();
-        $('#form3').show();
+        $('#form3').hide();
 
         $("#r_from_dt").prop('readonly', true);
         $("#r_to_dt").prop('readonly', true);
@@ -1171,7 +1171,7 @@ $(document).ready(function() {
         //   $(".btnhideshow").show();
         $('#form1').hide();
         $('#form2').show();
-        $('#form3').show();
+        $('#form3').hide();
 
         $("#r_from_dt").prop('readonly', false);
         $("#r_to_dt").prop('readonly', false);
