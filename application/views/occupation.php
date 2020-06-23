@@ -733,10 +733,10 @@
 										Detail</button>
 								</div>
 							</div>
-							<div class="panel-body" id="form3_certificate">
+							<div class="panel-body" >
 								<div class="col-lg-12">
 									<form class="form-horizontal" id="master_form3" name="master_form3">
-										<div id="divToPrint">
+										<div id="form3_certificate">
 											<center>
 												<table id="tbl_1" style="margin-top: 1%;width:100%;height:111px;padding-left:2%;padding-right:2%;">
 													<tbody>
@@ -823,7 +823,7 @@
 												</table>
 											</center>
 
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;">
+											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:12px">
 												<tbody>
 													<tr>
 														<td style="width:20%;margin-top: -1%;padding-left: 2%;">
@@ -899,7 +899,7 @@
 												</tbody>
 											</table>
 
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;border:1px solid #000;">
+											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;border:1px solid #000;font-size:12px">
 												<tbody>
 													<tr>
 														<td colspan="2" rowspan="2" style="width: 30%;border:1px solid #000;">
@@ -946,7 +946,7 @@
 												</tbody>
 											</table>
 
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;">
+											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:12px">
 												<tbody>
 
 													<tr>
@@ -991,7 +991,7 @@
 												</tbody>
 											</table>
 
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;">
+											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:12px">
 												<tbody>
 
 													<tr>
@@ -1014,7 +1014,7 @@
 												</tbody>
 											</table>
 
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;border:1px solid #000;">
+											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;border:1px solid #000;font-size:12px">
 												<thead>
 													<tr>
 														<td colspan="9">
@@ -1080,7 +1080,7 @@
 											</table>
 
 
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;">
+											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:10px">
 												<tbody>
 
 													<tr>
@@ -1146,13 +1146,15 @@
 												</tbody>
 											</table>
 										</div>
+										<div class="btn-group pull-left">
+											<input type="hidden" id="appointment_id" value="">
+											<a class="printPage btn btn-primary" href="#">Print</a>
+
+										</div>
+									</form>
 								</div>
 							</div>
-							<div class="btn-group pull-left">
-								<input type="hidden" id="appointment_id" value="">
-								<a class="printPage btn btn-primary" href="#">Print</a>
-								</form>
-							</div>
+
 						</div>
 					</div>
 					<!-------------end of form3----------------------------------->
@@ -1184,14 +1186,13 @@
 	<script src="<?php echo base_url() . 'assets/js/AjaxFileUpload.js' ?>"></script>
 
 	<script>
-
-$('a.printPage').click(function() {
+		$('a.printPage').click(function() {
 			var divToPrint = document.getElementById("form3_certificate");
 			newWin = window.open("");
-			 newWin.document.write(divToPrint.outerHTML);
-			 newWin.print();
+			newWin.document.write(divToPrint.outerHTML);
+			newWin.print();
 			// window.open("");
-			 newWin.close();
+			newWin.close();
 		});
 		var date = new Date();
 		date = date.toString('dd/MM/yyyy');
