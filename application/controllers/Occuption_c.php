@@ -434,4 +434,11 @@ class Occuption_c extends CI_Controller
 		$data['record'] = $this->Occuption_c_model->showdatawhere_id($where);
 		$this->load->view('receipt_print_occuption', $data);
 	}
+	public function getMaxReceipt()
+	{
+		$id = $this->input->post('year');
+		//$id = 2019;
+		$data = $this->Occuption_c_model->getreceiptid($id);
+		echo json_encode($data);
+	}
 }

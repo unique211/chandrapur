@@ -288,13 +288,13 @@
 
 											<div class="col-sm-3">
 
-												<label>शेरा / Remark (if any)*</label>
+												<label>शेरा / Remark (if any)</label>
 
 											</div>
 
 											<div class="col-sm-3">
 
-												<textarea name="remarks2" id="remarks2" style="resize: none;" class="form-control input-sm placeholdesize" placeholder="शेरा / Remark" id="remark2" name="remark2" required></textarea>
+												<textarea name="remarks2" id="remarks2" style="resize: none;" class="form-control input-sm placeholdesize" placeholder="शेरा / Remark" id="remark2" name="remark2"></textarea>
 											</div>
 
 
@@ -733,418 +733,421 @@
 										Detail</button>
 								</div>
 							</div>
-							<div class="panel-body" >
+							<div class="panel-body">
 								<div class="col-lg-12">
 									<form class="form-horizontal" id="master_form3" name="master_form3">
 										<div id="form3_certificate">
-											<center>
-												<table id="tbl_1" style="margin-top: 1%;width:100%;height:111px;padding-left:2%;padding-right:2%;">
-													<tbody>
-														<tr>
-															<td style="width:20%;margin-top: -1%;padding-left: 2%;">
-																<table style="width:100%;">
-																	<tbody>
-																		<tr style="margin-bottom: 5%;">
-																			<td>
-																				<center>
-																					<img src="<?php echo base_url(); ?>images/cmc.jpg" style="float: left;padding-left: 1%;width: 70%;height:105px;">
-																				</center>
-																			</td>
-																		</tr>
-																	</tbody>
-																</table>
-															</td>
-															<td style="width:40%;">
-																<center>
-																	<table>
+											<div style="border:2px solid #000;">
+
+												<center>
+													<table id="tbl_1" style="margin-top: 1%;width:100%;height:111px;padding-left:2%;padding-right:2%;">
+														<tbody>
+															<tr>
+																<td style="width:20%;margin-top: -1%;padding-left: 2%;">
+																	<table style="width:100%;">
 																		<tbody>
-
-
-																			<tr>
+																			<tr style="margin-bottom: 5%;">
 																				<td>
-																					<center><b style="font-size: 25px;">
-																							चंद्रपूर शहर महानगरपालिका,चंद्रपूर
-																						</b></center>
-																				</td>
-																			</tr>
-																			<tr>
-																				<td>
-																					<center><b style="font-size: 25px;">
-																							बाजार परवाना विभाग</b></center>
+																					<center>
+																						<img src="<?php echo base_url(); ?>images/cmc.jpg" style="float: left;padding-left: 1%;width: 70%;height:95px;">
+																					</center>
 																				</td>
 																			</tr>
 																		</tbody>
 																	</table>
-																</center>
-															</td>
-															<td style="width:20%;margin-top: -1%;padding-right: 1%;">
-
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</center>
-											<hr>
-											<center>
-												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;">
-													<tbody>
-														<tr>
-															<td style="width:20%;margin-top: -1%;padding-left: 2%;">
-
-															</td>
-															<td style="width:40%;">
-																<center>
-																	<table>
-																		<tbody>
-
-
-																			<tr>
-																				<td>
-																					<center><b style="font-size: 15px;">
-																							(म.न.पा. नियम 278,280 व 289 नुसार) (धंदा परवाना)
-																						</b></center>
-																				</td>
-																			</tr>
-																			<tr>
-																				<td>
-																					<center><b style="font-size: 15px;">
-																							बाजार परवाना विभाग</b></center>
-																				</td>
-																			</tr>
-																		</tbody>
-																	</table>
-																</center>
-															</td>
-															<td style="width:20%;margin-top: -1%;padding-right: 1%;">
-
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</center>
-
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:12px">
-												<tbody>
-													<tr>
-														<td style="width:20%;margin-top: -1%;padding-left: 2%;">
-
-														</td>
-														<td style="width:30%;">
-
-
-
-														</td>
-														<td style="width:20%;margin-top: -1%;padding-right: 1%;">
-
-														</td>
-														<td style="width:30%;margin-top: -1%;padding-right: 1%;">
-															<center>परवाना क्र. <span id="c_auto_id"></span></center>
-														</td>
-													</tr>
-													<tr>
-														<td style="width:20%;margin-top: -1%;padding-left: 2%;">
-
-														</td>
-														<td style="width:30%;">
-
-
-
-														</td>
-														<td style="width:20%;margin-top: -1%;padding-right: 1%;">
-
-														</td>
-														<td style="width:30%;margin-top: -1%;padding-right: 1%;">
-															<center> दिनांक :- <span id="c_today"></span></center>
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="width:20%;margin-top: -1%;padding-left: 2%;">
-															परवाना धरकाचे नाव : <span id="c_name"></span>
-														</td>
-
-														<td style="width:20%;margin-top: -1%;padding-right: 1%;">
-
-														</td>
-														<td rowspan="5" style="margin-top: -1%;padding-right: 1%;">
-															<center>
-																<div style="width:100px;height:130px;border:1px solid #000;">
+																</td>
+																<td style="width:40%;">
 																	<center>
-																		<div id="c_photo"></div>
+																		<table>
+																			<tbody>
+
+
+																				<tr>
+																					<td>
+																						<center><b style="font-size: 20px;">
+																								चंद्रपूर शहर महानगरपालिका,चंद्रपूर
+																							</b></center>
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>
+																						<center><b style="font-size: 20px;">
+																								बाजार परवाना विभाग</b></center>
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
 																	</center>
-																</div>
-																<!-- <center> Customer Photo</center> -->
-															</center>
-														</td>
-													</tr>
-													<tr>
-														<td colspan="2" style="width:20%;margin-top: -1%;padding-left: 2%;">
-															व्यवसायाचे नाव : <span id="c_business_name"></span>
-														</td>
+																</td>
+																<td style="width:20%;margin-top: -1%;padding-right: 1%;">
 
-														<td style="width:20%;margin-top: -1%;padding-right: 1%;">
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</center>
+												<hr>
+												<center>
+													<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;">
+														<tbody>
+															<tr>
+																<td style="width:20%;margin-top: -1%;padding-left: 2%;">
 
-														</td>
+																</td>
+																<td style="width:40%;">
+																	<center>
+																		<table>
+																			<tbody>
 
-													</tr>
-													<tr>
-														<td colspan="2" rowspan="3" style="width:20%;margin-top: -1%;padding-left: 2%;">
-															व्यवसायाचा पत्ता : <span id="c_business_address"></span>
-														</td>
 
-														<td style="width:20%;margin-top: -1%;padding-right: 1%;">
+																				<tr>
+																					<td>
+																						<center><b style="font-size: 14px;">
+																								(म.न.पा. नियम 278,280 व 289 नुसार) (धंदा परवाना)
+																							</b></center>
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>
+																						<center><b style="font-size: 14px;">
+																								बाजार परवाना विभाग</b></center>
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</center>
+																</td>
+																<td style="width:20%;margin-top: -1%;padding-right: 1%;">
 
-														</td>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</center>
 
-													</tr>
-												</tbody>
-											</table>
+												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:10px">
+													<tbody>
+														<tr>
+															<td style="width:20%;margin-top: -1%;padding-left: 2%;">
 
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;border:1px solid #000;font-size:12px">
-												<tbody>
-													<tr>
-														<td colspan="2" rowspan="2" style="width: 30%;border:1px solid #000;">
-															<center>परवानाचे प्रकार / परवान्याचे वर्गीकरण</center>
-														</td>
-														<td colspan="3" style="width: 70%;border:1px solid #000;">
-															<center>परिमाण</center>
-														</td>
-													</tr>
-													<tr>
+															</td>
+															<td style="width:30%;">
 
-														<td style="width: 20%;border:1px solid #000;">
-															<center>परिमाण</center>
-														</td>
-														<td style="width: 30%;border:1px solid #000;">
-															<center>शुल्क प्रकार</center>
-														</td>
-														<td style="width: 20%;border:1px solid #000;">
-															<center>शुल्क</center>
-														</td>
-													</tr>
-													<tr>
+
+
+															</td>
+															<td style="width:20%;margin-top: -1%;padding-right: 1%;">
+
+															</td>
+															<td style="width:30%;margin-top: -1%;padding-right: 1%;">
+																<center>परवाना क्र. <span id="c_auto_id"></span></center>
+															</td>
+														</tr>
+														<tr>
+															<td style="width:20%;margin-top: -1%;padding-left: 2%;">
+
+															</td>
+															<td style="width:30%;">
+
+
+
+															</td>
+															<td style="width:20%;margin-top: -1%;padding-right: 1%;">
+
+															</td>
+															<td style="width:30%;margin-top: -1%;padding-right: 1%;">
+																<center> दिनांक :- <span id="c_today"></span></center>
+															</td>
+														</tr>
+														<tr>
+															<td colspan="2" style="width:20%;margin-top: -1%;padding-left: 2%;">
+																परवाना धरकाचे नाव : <span id="c_name"></span>
+															</td>
+
+															<td style="width:20%;margin-top: -1%;padding-right: 1%;">
+
+															</td>
+															<td rowspan="5" style="margin-top: -1%;padding-right: 1%;">
+																<center>
+																	<div style="width:100px;height:130px;border:1px solid #000;">
+																		<center>
+																			<div id="c_photo"></div>
+																		</center>
+																	</div>
+																	<!-- <center> Customer Photo</center> -->
+																</center>
+															</td>
+														</tr>
+														<tr>
+															<td colspan="2" style="width:20%;margin-top: -1%;padding-left: 2%;">
+																व्यवसायाचे नाव : <span id="c_business_name"></span>
+															</td>
+
+															<td style="width:20%;margin-top: -1%;padding-right: 1%;">
+
+															</td>
+
+														</tr>
+														<tr>
+															<td colspan="2" rowspan="3" style="width:20%;margin-top: -1%;padding-left: 2%;">
+																व्यवसायाचा पत्ता : <span id="c_business_address"></span>
+															</td>
+
+															<td style="width:20%;margin-top: -1%;padding-right: 1%;">
+
+															</td>
+
+														</tr>
+													</tbody>
+												</table>
+
+												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;border:1px solid #000;font-size:10px">
+													<tbody>
+														<tr>
+															<td colspan="2" rowspan="2" style="width: 30%;border:1px solid #000;">
+																<center>परवानाचे प्रकार / परवान्याचे वर्गीकरण</center>
+															</td>
+															<td colspan="3" style="width: 70%;border:1px solid #000;">
+																<center>परिमाण</center>
+															</td>
+														</tr>
+														<tr>
+
+															<td style="width: 20%;border:1px solid #000;">
+																<center>परिमाण</center>
+															</td>
+															<td style="width: 30%;border:1px solid #000;">
+																<center>शुल्क प्रकार</center>
+															</td>
+															<td style="width: 20%;border:1px solid #000;">
+																<center>शुल्क</center>
+															</td>
+														</tr>
+														<tr>
+															<td colspan="2" style="width: 30%;border:1px solid #000;">
+																<center><span id="c_business_type"></span></center>
+															</td>
+															<td style="width: 20%;border:1px solid #000;">
+																<center><span id="c_dimension"></span></center>
+															</td>
+															<td style="width: 30%;border:1px solid #000;">
+																<center><span id="c_charge_type"></span></center>
+															</td>
+															<td style="width: 20%;border:1px solid #000;">
+																<center><span id="c_charge"></span></center>
+															</td>
+														</tr>
 														<td colspan="2" style="width: 30%;border:1px solid #000;">
-															<center><span id="c_business_type"></span></center>
-														</td>
-														<td style="width: 20%;border:1px solid #000;">
-															<center><span id="c_dimension"></span></center>
-														</td>
-														<td style="width: 30%;border:1px solid #000;">
-															<center><span id="c_charge_type"></span></center>
-														</td>
-														<td style="width: 20%;border:1px solid #000;">
-															<center><span id="c_charge"></span></center>
-														</td>
-													</tr>
-													<td colspan="2" style="width: 30%;border:1px solid #000;">
-														<center></center>
-													</td>
-													<td colspan="2" style="width: 20%;border:1px solid #000;text-align: right;">एकूण </td>
-													<td style="width: 20%;border:1px solid #000;">
-														<center><span id="c_tot_charge"></span></center>
-													</td>
-													</tr>
-												</tbody>
-											</table>
-
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:12px">
-												<tbody>
-
-													<tr>
-														<td colspan="2" style="width:40%;margin-top: -1%;padding-left: 2%;">
-															एकूण परवाना फी : <span id="c_tot_charge2"></span>
-														</td>
-
-														<td style="width:60%;margin-top: -1%;padding-right: 1%;">
-
-														</td>
-
-													</tr>
-													<tr>
-														<td colspan="2" style="width:40%;margin-top: -1%;padding-left: 2%;">
-															पावती क्र. : <span id="c_auto_id2"></span>
-														</td>
-
-														<td style="width:60%;margin-top: -1%;padding-right: 1%;">
-															दिनांक : <span id="c_today2"></span>
-														</td>
-
-													</tr>
-													<tr>
-														<td colspan="2" style="width:40%;margin-top: -1%;padding-left: 2%;">
-															परवानाची मुदत पासून : <span id="c_from"></span>
-														</td>
-
-														<td style="width:60%;margin-top: -1%;padding-right: 1%;">
-															परवानाची मुदत पर्यंत : <span id="c_to"></span>
-														</td>
-
-													</tr>
-													<tr>
-														<td colspan="4" style="margin-top: -1%;padding-left: 2%;">
-															शेरा / Remark (if any) : <span id="c_remark"></span>
-														</td>
-
-
-
-													</tr>
-
-												</tbody>
-											</table>
-
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:12px">
-												<tbody>
-
-													<tr>
-														<td colspan="2" style="width:40%;margin-top: -1%;padding-left: 2%;">
-
-														</td>
-
-														<td style="width:30%;margin-top: -1%;padding-right: 1%;">
-															<center> शिक्का (Seal) </center>
-														</td>
-
-														<td style="width:30%;margin-top: -1%;padding-right: 1%;">
-															<center> अनुज्ञापन अधिकाऱ्याची सही</center><br>
-															<center> <b>चंद्रपूर शहर महानगरपालिका, चंद्रपूर </b> </center>
-														</td>
-
-													</tr>
-
-
-												</tbody>
-											</table>
-
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;border:1px solid #000;font-size:12px">
-												<thead>
-													<tr>
-														<td colspan="9">
-															<center>परवाना नुतनीकरण तक्ता</center>
-														</td>
-													</tr>
-													<tr>
-														<td style="width: 5%;border:1px solid #000;">
-															<center>अ क्र</center>
-														</td>
-														<td style="width: 15%;border:1px solid #000;">
-															<center>नुतनीकरण पावती क्र</center>
-														</td>
-														<td style="width: 8%;border:1px solid #000;">
-															<center>पावती दि.</center>
-														</td>
-														<td style="width: 14%;border:1px solid #000;">
-															<center>नुतनीकरण शुल्क</center>
-														</td>
-														<td style="width: 8%;border:1px solid #000;">
-															<center>विलंब शुल्क</center>
-														</td>
-														<td style="width: 8%;border:1px solid #000;">
-															<center>एकूण शुल्क</center>
-														</td>
-														<td colspan="2" style="width: 22%;border:1px solid #000;">
-															<center>नुतानिकरनाची मुदत</center>
-														</td>
-														<td style="width: 20%;border:1px solid #000;">
-															<center>अधिकाऱ्याची सही व शिक्का</center>
-														</td>
-
-													</tr>
-
-
-													<tr>
-														<td colspan="6" style="border:1px solid #000;">
 															<center></center>
 														</td>
-
-														<td style="width: 11%;border:1px solid #000;">
-															<center>पासून</center>
-														</td>
-														<td style="width: 11%;border:1px solid #000;">
-															<center>पर्यंत</center>
-														</td>
+														<td colspan="2" style="width: 20%;border:1px solid #000;text-align: right;">एकूण </td>
 														<td style="width: 20%;border:1px solid #000;">
-															<center></center>
+															<center><span id="c_tot_charge"></span></center>
 														</td>
+														</tr>
+													</tbody>
+												</table>
 
-													</tr>
-												</thead>
-												<tbody id="c_table_renew">
-													<tr>
-														<td colspan="9" style="border:1px solid #000;">
-															<center>.</center>
-														</td>
+												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:10px">
+													<tbody>
 
+														<tr>
+															<td colspan="2" style="width:40%;margin-top: -1%;padding-left: 2%;">
+																एकूण परवाना फी : <span id="c_tot_charge2"></span>
+															</td>
 
-													</tr>
+															<td style="width:60%;margin-top: -1%;padding-right: 1%;">
 
-												</tbody>
-											</table>
+															</td>
 
+														</tr>
+														<tr>
+															<td colspan="2" style="width:40%;margin-top: -1%;padding-left: 2%;">
+																पावती क्र. : <span id="c_auto_id2"></span>
+															</td>
 
-											<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:10px">
-												<tbody>
+															<td style="width:60%;margin-top: -1%;padding-right: 1%;">
+																दिनांक : <span id="c_today2"></span>
+															</td>
 
-													<tr>
-														<td colspan="2" style="margin-top: -1%;padding-left: 2%;">
-															<b> अटी व शर्ती :-</b>
-														</td>
+														</tr>
+														<tr>
+															<td colspan="2" style="width:40%;margin-top: -1%;padding-left: 2%;">
+																परवानाची मुदत पासून : <span id="c_from"></span>
+															</td>
 
+															<td style="width:60%;margin-top: -1%;padding-right: 1%;">
+																परवानाची मुदत पर्यंत : <span id="c_to"></span>
+															</td>
 
-
-													</tr>
-
-													<tr>
-														<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
-															<b> 1.</b> </td>
-
-														<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
-															<b> परवाना दर्शनी भागावर लावण्यात यावा.</b> </td>
-													</tr>
-													<tr>
-														<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
-															<b> 2.</b> </td>
-
-														<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
-															<b> अनुज्ञाप्तीधारकाची ह्या अनुज्ञाप्तीचे नवीकरणाचा अर्ज अनुज्ञाप्तीची मुदत ज्या वर्षात संपत असेल त्या वर्षाच्या आर्थिक वर्ष समाप्ती पूर्वी सादर करण्यात यावे.</b> </td>
-													</tr>
-													<tr>
-														<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
-															<b> 3.</b> </td>
-
-														<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
-															<b>हा परवाना देण्यात आल्यामुळे ज्या वास्तुत हे दुकान/आस्थाप्ना/व्यवसाय स्थित आहे त्या वास्तूला/दुकानाला वैधता बहाल होत नाही. या परवाना/नोंदणीचा उपयोग जागेच्या मालकी हक्का बाबत पुरावा म्हणून करता येणार नाही. तसेच ज्या वास्तूत हे दुकान/आस्थापना/व्यवसाय स्थित आहे ती वस्तू आजच्या दिनांक/वेळात अस्थित्वात असल्यासंबंधात मनपा परवाना नोंदणीमुळे कोणताही हक्क व स्वामित्व सदरहु परवाना/नोंदणी धारकास प्राप्त होत नाही.</b> </td>
-													</tr>
-													<tr>
-														<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
-															<b> 4.</b> </td>
-
-														<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
-															<b> नोंदणी/परवाना बाबत वाद निर्माण झाल्यास कोणतेही कारण न दर्शविता सदरचा परवाना रद्द करण्याचे अधिकार मा.आयुक्त यांना आहेत. </b> </td>
-													</tr>
-													<tr>
-														<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
-															<b> 5.</b> </td>
-
-														<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
-															<b> नोंदणी/परवाना धारकांनी विहित मुदतीत परवाना नुतनीकरण न केल्यास रु. १०/- विलंब शुल्क आकारण्यात येईल.</b> </td>
-													</tr>
-													<tr>
-														<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
-															<b> 6.</b> </td>
-
-														<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
-															<b> अनधिकृत बांधकाम असल्यास नोंदणी/परवाना देण्यात आल्यामुळे अनधिकृत बांधकाम नियमित झाले असे समजण्यात येऊ नये. परवाना देण्यात आल्यामुळे महानगरपालिकेस कायद्याने असलेल्या अनधिकृत बांधकामाविरुद्ध करावयाच्या कायदेशीर/हरकतीस कोणतीही बाधा येत नाही.</b> </td>
-													</tr>
-													<tr>
-														<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
-															<b> 7.</b> </td>
-
-														<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
-															<b> सदर परवान्यामध्ये मानवी तथा संगणकीय चूक असल्यास सुधारित परवाना देण्याचे अधिकार राखून ठेवण्यात येत आहे.</b> </td>
-													</tr>
+														</tr>
+														<tr>
+															<td colspan="4" style="margin-top: -1%;padding-left: 2%;">
+																शेरा / Remark (if any) : <span id="c_remark"></span>
+															</td>
 
 
-												</tbody>
-											</table>
+
+														</tr>
+
+													</tbody>
+												</table>
+
+												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:10px">
+													<tbody>
+
+														<tr>
+															<td colspan="2" style="width:40%;margin-top: -1%;padding-left: 2%;">
+
+															</td>
+
+															<td style="width:30%;margin-top: -1%;padding-right: 1%;">
+																<center> शिक्का (Seal) </center>
+															</td>
+
+															<td style="width:30%;margin-top: -1%;padding-right: 1%;">
+																<center> अनुज्ञापन अधिकाऱ्याची सही</center><br>
+																<center> <b>चंद्रपूर शहर महानगरपालिका, चंद्रपूर </b> </center>
+															</td>
+
+														</tr>
+
+
+													</tbody>
+												</table>
+
+												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;border:1px solid #000;font-size:10px">
+													<thead>
+														<tr>
+															<td colspan="9">
+																<center>परवाना नुतनीकरण तक्ता</center>
+															</td>
+														</tr>
+														<tr>
+															<td style="width: 5%;border:1px solid #000;">
+																<center>अ क्र</center>
+															</td>
+															<td style="width: 15%;border:1px solid #000;">
+																<center>नुतनीकरण पावती क्र</center>
+															</td>
+															<td style="width: 8%;border:1px solid #000;">
+																<center>पावती दि.</center>
+															</td>
+															<td style="width: 14%;border:1px solid #000;">
+																<center>नुतनीकरण शुल्क</center>
+															</td>
+															<td style="width: 8%;border:1px solid #000;">
+																<center>विलंब शुल्क</center>
+															</td>
+															<td style="width: 8%;border:1px solid #000;">
+																<center>एकूण शुल्क</center>
+															</td>
+															<td colspan="2" style="width: 22%;border:1px solid #000;">
+																<center>नुतानिकरनाची मुदत</center>
+															</td>
+															<td style="width: 20%;border:1px solid #000;">
+																<center>अधिकाऱ्याची सही व शिक्का</center>
+															</td>
+
+														</tr>
+
+
+														<tr>
+															<td colspan="6" style="border:1px solid #000;">
+																<center></center>
+															</td>
+
+															<td style="width: 11%;border:1px solid #000;">
+																<center>पासून</center>
+															</td>
+															<td style="width: 11%;border:1px solid #000;">
+																<center>पर्यंत</center>
+															</td>
+															<td style="width: 20%;border:1px solid #000;">
+																<center></center>
+															</td>
+
+														</tr>
+													</thead>
+													<tbody id="c_table_renew">
+														<tr>
+															<td colspan="9" style="border:1px solid #000;">
+																<center>.</center>
+															</td>
+
+
+														</tr>
+
+													</tbody>
+												</table>
+
+
+												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;font-size:10px">
+													<tbody>
+
+														<tr>
+															<td colspan="2" style="margin-top: -1%;padding-left: 2%;">
+																<b> अटी व शर्ती :-</b>
+															</td>
+
+
+
+														</tr>
+
+														<tr>
+															<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
+																<b> 1.</b> </td>
+
+															<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
+																<b> परवाना दर्शनी भागावर लावण्यात यावा.</b> </td>
+														</tr>
+														<tr>
+															<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
+																<b> 2.</b> </td>
+
+															<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
+																<b> अनुज्ञाप्तीधारकाची ह्या अनुज्ञाप्तीचे नवीकरणाचा अर्ज अनुज्ञाप्तीची मुदत ज्या वर्षात संपत असेल त्या वर्षाच्या आर्थिक वर्ष समाप्ती पूर्वी सादर करण्यात यावे.</b> </td>
+														</tr>
+														<tr>
+															<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
+																<b> 3.</b> </td>
+
+															<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
+																<b>हा परवाना देण्यात आल्यामुळे ज्या वास्तुत हे दुकान/आस्थाप्ना/व्यवसाय स्थित आहे त्या वास्तूला/दुकानाला वैधता बहाल होत नाही. या परवाना/नोंदणीचा उपयोग जागेच्या मालकी हक्का बाबत पुरावा म्हणून करता येणार नाही. तसेच ज्या वास्तूत हे दुकान/आस्थापना/व्यवसाय स्थित आहे ती वस्तू आजच्या दिनांक/वेळात अस्थित्वात असल्यासंबंधात मनपा परवाना नोंदणीमुळे कोणताही हक्क व स्वामित्व सदरहु परवाना/नोंदणी धारकास प्राप्त होत नाही.</b> </td>
+														</tr>
+														<tr>
+															<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
+																<b> 4.</b> </td>
+
+															<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
+																<b> नोंदणी/परवाना बाबत वाद निर्माण झाल्यास कोणतेही कारण न दर्शविता सदरचा परवाना रद्द करण्याचे अधिकार मा.आयुक्त यांना आहेत. </b> </td>
+														</tr>
+														<tr>
+															<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
+																<b> 5.</b> </td>
+
+															<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
+																<b> नोंदणी/परवाना धारकांनी विहित मुदतीत परवाना नुतनीकरण न केल्यास रु. १०/- विलंब शुल्क आकारण्यात येईल.</b> </td>
+														</tr>
+														<tr>
+															<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
+																<b> 6.</b> </td>
+
+															<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
+																<b> अनधिकृत बांधकाम असल्यास नोंदणी/परवाना देण्यात आल्यामुळे अनधिकृत बांधकाम नियमित झाले असे समजण्यात येऊ नये. परवाना देण्यात आल्यामुळे महानगरपालिकेस कायद्याने असलेल्या अनधिकृत बांधकामाविरुद्ध करावयाच्या कायदेशीर/हरकतीस कोणतीही बाधा येत नाही.</b> </td>
+														</tr>
+														<tr>
+															<td style="width: 10%;;margin-top: -1%;padding-left: 2%;">
+																<b> 7.</b> </td>
+
+															<td style="width: 90%;;margin-top: -1%;padding-left: 2%;">
+																<b> सदर परवान्यामध्ये मानवी तथा संगणकीय चूक असल्यास सुधारित परवाना देण्याचे अधिकार राखून ठेवण्यात येत आहे.</b> </td>
+														</tr>
+
+
+													</tbody>
+												</table>
+											</div>
 										</div>
 										<div class="btn-group pull-left">
 											<input type="hidden" id="appointment_id" value="">
@@ -1192,7 +1195,7 @@
 			newWin.document.write(divToPrint.outerHTML);
 			newWin.print();
 			// window.open("");
-			newWin.close();
+				newWin.close();
 		});
 		var date = new Date();
 		date = date.toString('dd/MM/yyyy');

@@ -153,7 +153,7 @@ class Occuption_c_model extends CI_Model
 		
 				$this->db->select('occuption_receipt.*');
 				$this->db->from('occuption_receipt');
-				$this->db->where('rcpt_no !=', 1);
+			
 				$this->db->where('ref_id', $id);
 				$query = $this->db->get();
 			
@@ -335,5 +335,13 @@ class Occuption_c_model extends CI_Model
 		$this->db->where('id', $id);
 		$result = $this->db->get()->result();
 		return $result;
+	}
+
+	function getreceiptid($id)
+	{
+		$this->db->select('max(receipt_num) as last_receipt');
+		$this->db->from('occuption_receipt');
+		$this->db->where('receipt_year', $id);
+		return $this->db->get()->row();
 	}
 }
