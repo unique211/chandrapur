@@ -1161,6 +1161,122 @@
 						</div>
 					</div>
 					<!-------------end of form3----------------------------------->
+
+					<!------------form4 start-------------------------->
+					<div class="col-md-12 col-sm-12 col-xs-12 right_side" id="form4" style="display:none;margin-bottom:-1%;">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title">Certificate</h3>
+								<div class="pull-right">
+									<button class="btn btn-success closehideshow" style="background-color:#00B050;">View
+										Detail</button>
+								</div>
+							</div>
+							<div class="panel-body">
+								<div class="col-lg-12">
+									<form class="form-horizontal" id="master_form4" name="master_form4">
+										<div id="form4_certificate">
+											<div style="border:2px solid #000;width:100%;height:98%">
+
+												<center>
+													<table id="tbl_1" style="margin-top: 1%;width:100%;height:111px;padding-left:2%;padding-right:2%;">
+														<tbody>
+															<tr>
+																<td style="width:20%;margin-top: -1%;padding-left: 2%;">
+																	<table style="width:100%;">
+																		<tbody>
+																			<tr style="margin-bottom: 5%;">
+																				<td>
+																					<center>
+																						<img src="<?php echo base_url(); ?>images/cmc.jpg" style="float: left;padding-left: 1%;width: 70%;height:95px;">
+																					</center>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+																<td style="width:40%;">
+																	<center>
+																		<table>
+																			<tbody>
+
+
+																				<tr>
+																					<td>
+																						<center><b style="font-size: 20px;">
+																								चंद्रपूर शहर महानगरपालिका,चंद्रपूर
+																							</b></center>
+																					</td>
+																				</tr>
+																				<tr>
+																					<td>
+																						<center><b style="font-size: 20px;">
+																						-:  मौका तपासणी अहवाल :-</b></center>
+																					</td>
+																				</tr>
+																			</tbody>
+																		</table>
+																	</center>
+																</td>
+																<td style="width:20%;margin-top: -1%;padding-right: 1%;">
+
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</center>
+												<hr>
+											
+												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;">
+												<tr>
+													<th style="width: 70%;"></th>
+													<th style="width: 30%;font-size:20px">दिनांक :- <span id="l_today1"></span></th>
+								
+												</tr>
+												</table>
+												
+
+												<p style="text-align: justify;font-size:20px"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;अहवाल याप्रमाणे आहे कि, चंद्रपूर शहर महानगरपालिका कार्यालयास  श्री/श्रीमती <u><span id="l_name"></span></u>  व्यवसायाचा पत्ता <u><span id="l_address"></span></u> यांचा व्यवसाय <u><span id="l_bussiness"></span></u> संबंधी बाजार परवाना मिळण्याबाबतचा अर्ज  दि. <u><span id="l_today2"></span></u>  तारखेला प्राप्त झाला आहे. तरी सदर व्यवसायाची मौका तपासणी करण्यास श्री. ………………………………. यांना आदेशित करण्यात येते .</b></p>
+
+												<table style="width:100%;padding-left:2%;padding-right:2%;padding-top:20px;">
+													<tr>
+													<th style="width: 30%;font-size:20px">मा . प्रभाग अधिकारी</th>
+													<th style="width: 70%;"></th>
+													</tr>
+												</table>
+												<table style="width:100%;padding-left:2%;padding-right:2%;padding-top:280px;">
+													<tr>
+													<th style="width: 30%;font-size:20px">मु . स्वच्छता निरीक्षक </th>
+													<th style="width: 70%;"></th>
+													</tr>
+												</table>
+												<table style="width:100%;padding-left:2%;padding-right:2%;padding-top:60px;">
+													<tr>
+													<th style="width: 30%;font-size:20px">मा . प्रभाग अधिकारी</th>
+													<th style="width: 70%;"></th>
+													</tr>
+												</table>
+												<table style="width:100%;padding-left:2%;padding-right:2%;padding-top:60px;">
+													<tr>
+													<th style="width: 30%;font-size:20px">मा . सहा . आयुक्त</th>
+													<th style="width: 70%;"></th>
+													</tr>
+												</table>
+
+											</div>
+										</div>
+										<div class="btn-group pull-left">
+											<input type="hidden" id="letter_id" value="">
+											<a class="printPage2 btn btn-primary" href="#">Print</a>
+<button class="btn btn-success" type="button" id="letter_arrrove">Approve</button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!-------------end of form3----------------------------------->
 				</div>
 				<!-- end notification -->
 
@@ -1191,6 +1307,15 @@
 	<script>
 		$('a.printPage').click(function() {
 			var divToPrint = document.getElementById("form3_certificate");
+			newWin = window.open("");
+			newWin.document.write(divToPrint.outerHTML);
+			newWin.print();
+			// window.open("");
+				newWin.close();
+		});
+
+		$('a.printPage2').click(function() {
+			var divToPrint = document.getElementById("form4_certificate");
 			newWin = window.open("");
 			newWin.document.write(divToPrint.outerHTML);
 			newWin.print();

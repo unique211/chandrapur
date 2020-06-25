@@ -441,4 +441,12 @@ class Occuption_c extends CI_Controller
 		$data = $this->Occuption_c_model->getreceiptid($id);
 		echo json_encode($data);
 	}
+	public function letter_approve()
+	{
+		$id = $this->input->post('id');
+		//$id = 2019;
+		$data = $this->Occuption_c_model->letter_approve($id);
+		echo json_encode($data);
+	}
+
 }

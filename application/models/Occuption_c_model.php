@@ -344,4 +344,14 @@ class Occuption_c_model extends CI_Model
 		$this->db->where('receipt_year', $id);
 		return $this->db->get()->row();
 	}
+	function letter_approve($id)
+	{
+		$this->db->where('id', $id);
+		$data = array(
+			'is_letter' => 1
+		);
+		$result =	$this->db->update('occuption_certificate', $data);
+
+		return $result;
+	}
 }

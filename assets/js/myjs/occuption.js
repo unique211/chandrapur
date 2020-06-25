@@ -273,6 +273,7 @@ $(document).ready(function() {
                         '<th><font style="font-weight:bold">Date</font></th>' +
                         '<th><font style="font-weight:bold">Unique Number</font></th>' +
                         '<th style="display:none"><font style="font-weight:bold">Sr No</font></th>' +
+                        '<th><font style="font-weight:bold">Letter</font></th>' +
                         '<th><font style="font-weight:bold">Receipt</font></th>' +
                         '<th><font style="font-weight:bold">Certificate</font></th>' +
 
@@ -291,14 +292,27 @@ $(document).ready(function() {
 
                         var readonly = '';
                         var readonly1 = '';
+                        var readonly2 = '';
 
-                        if (data[i].is_rcpt == 0) {
+                        if (data[i].is_letter == 0) {
+                            readonly2 = '';
                             readonly = 'disabled';
-                            readonly1 = '';
-                        } else {
                             readonly1 = 'disabled';
-                            readonly = '';
+
+
+
+                        } else {
+                            readonly2 = 'disabled';
+                            if (data[i].is_rcpt == 0) {
+                                readonly = 'disabled';
+                                readonly1 = '';
+                            } else {
+                                readonly = '';
+                                readonly1 = 'disabled';
+                            }
                         }
+
+
 
 
 
@@ -310,6 +324,7 @@ $(document).ready(function() {
 
 
                             '<td style="display:none" id="srno_' + data[i].id + '">' + data[i].sr_no + '</td>' +
+                            '<td class="not-export-column" ><button name="edit" value="edit" class="letter btn btn-primary" id=' + data[i].id + ' ' + readonly2 + '>Letter</button></td>' +
                             '<td class="not-export-column" ><button name="edit" value="edit" class="reciept btn btn-primary" id=' + data[i].id + ' ' + readonly1 + '>Reciept</button></td>' +
                             '<td class="not-export-column" ><button name="edit" value="edit" class="certificate btn btn-primary" id=' + data[i].id + ' ' + readonly + ' >Certificate</button></td>' +
                             '<td class="not-export-column" ><button name="edit" value="edit" class="edit_data btn btn-success" id=edit_' + data[i].id + '><i class="fa fa-edit"></i></button>';
@@ -629,6 +644,7 @@ $(document).ready(function() {
         $(".formhideshow").hide();
         $('#file_info_tbody').html('');
         $('#row').val("0");
+        $("#form4").hide();
         $("#form3").hide();
         $("#form2").hide();
         $("#form1").show();
@@ -978,7 +994,7 @@ $(document).ready(function() {
         $('#form1').hide();
         $('#form2').show();
         $('#form3').hide();
-
+        $("#form4").hide();
         $("#r_from_dt").prop('readonly', true);
         $("#r_to_dt").prop('readonly', true);
 
@@ -1173,7 +1189,7 @@ $(document).ready(function() {
         $('#form1').hide();
         $('#form2').show();
         $('#form3').hide();
-
+        $("#form4").hide();
         $("#r_from_dt").prop('readonly', false);
         $("#r_to_dt").prop('readonly', false);
         $('#btnprint2').hide();
@@ -1601,6 +1617,7 @@ $(document).ready(function() {
         $('.formhideshow').show();
         $("#form1").hide();
         $("#form2").hide();
+        $("#form4").hide();
         $("#form3").show();
 
         $("#c_auto_id").html('');
@@ -1741,5 +1758,84 @@ $(document).ready(function() {
         });
     });
     //------------------------end of Certificate ----------------------------------------
+
+    $(document).on('click', ".letter", function() {
+        $('.tablehideshow').hide();
+        $('.formhideshow').show();
+        $("#form1").hide();
+        $("#form2").hide();
+        $("#form3").hide();
+        $("#form4").show();
+
+        $("#l_today1").html('');
+        $("#l_name").html('');
+        $("#l_address").html('');
+        $("#l_bussiness").html('');
+        $("#l_today2").html('');
+        $("#letter_id").val('');
+
+
+        table_name = "occuption_certificate";
+        var id = $(this).attr('id');
+
+        $.ajax({
+            type: "POST",
+            url: baseurl + "Occuption_c/showdata_where",
+            data: {
+                table_name: table_name,
+                id: id,
+            },
+            dataType: "JSON",
+            async: false,
+            success: function(data) {
+
+                for (var i = 0; i < data.length; i++) {
+
+
+                    var date = new Date();
+                    date = date.toString('dd/MM/yyyy');
+
+                    $("#letter_id").val(data[i].id);
+                    $("#l_today1").html(date);
+                    $("#l_today2").html(date);
+                    $("#l_name").html(data[i].name);
+                    $("#l_bussiness").html(data[i].business_name);
+                    $("#l_address").html(data[i].business_address);
+
+
+
+
+                    //  $('.date_of_issue').html(date_of_issue1);
+                }
+            }
+        });
+    });
+
+    $(document).on('click', "#letter_arrrove", function() {
+        var id = $("#letter_id").val();
+
+        $.ajax({
+            type: "POST",
+            url: baseurl + "Occuption_c/letter_approve",
+            data: {
+
+                id: id,
+            },
+            dataType: "JSON",
+            async: false,
+            success: function(data) {
+                console.log(data);
+                if (data != "") {
+                    successTost("Letter Approved");
+                    datashow();
+                    $('.closehideshow').trigger('click');
+
+                } else {
+                    errorTost("Something Wrong", "error");
+                }
+            }
+        });
+
+    });
 
 });
