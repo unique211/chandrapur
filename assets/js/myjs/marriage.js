@@ -875,6 +875,12 @@ $(document).ready(function() {
         $("#msg12_3").html('');
         $("#file_attachother12_4").val('');
         $("#msg12_4").html('');
+        $("#file_attachother12_5").val('');
+        $("#msg12_5").html('');
+        $("#file_attachother12_6").val('');
+        $("#msg12_6").html('');
+        $("#file_attachother12_7").val('');
+        $("#msg12_7").html('');
         $("#ch_1").val(0);
         $("#ch_2").val(0);
         $("#ch_3_1").val(0);
@@ -898,6 +904,9 @@ $(document).ready(function() {
         $("#ch_12_2").val(0);
         $("#ch_12_3").val(0);
         $("#ch_12_4").val(0);
+        $("#ch_12_5").val(0);
+        $("#ch_12_6").val(0);
+        $("#ch_12_7").val(0);
         $("#attachment1").hide();
         $("#attachment2").hide();
         $("#attachment3_1").hide();
@@ -921,6 +930,9 @@ $(document).ready(function() {
         $("#attachment12_2").hide();
         $("#attachment12_3").hide();
         $("#attachment12_4").hide();
+        $("#attachment12_5").hide();
+        $("#attachment12_6").hide();
+        $("#attachment12_7").hide();
         $("#down1").html('');
         $("#down2").html('');
         $("#down3_1").html('');
@@ -944,6 +956,9 @@ $(document).ready(function() {
         $("#down12_2").html('');
         $("#down12_3").html('');
         $("#down12_4").html('');
+        $("#down12_5").html('');
+        $("#down12_6").html('');
+        $("#down12_7").html('');
         // var isNew = true;
         table_name = "marrige_registration";
         var id = $(this).attr('id');
@@ -996,6 +1011,9 @@ $(document).ready(function() {
                         var download12_2 = "";
                         var download12_3 = "";
                         var download12_4 = "";
+                        var download12_5 = "";
+                        var download12_6 = "";
+                        var download12_7 = "";
                         for (var i = 0; i < data.length; i++) {
                             var ch_id = data[i].id;
                             var ch_1 = data[i].ch_1;
@@ -1021,6 +1039,9 @@ $(document).ready(function() {
                             var ch_12_2 = data[i].ch_12_2;
                             var ch_12_3 = data[i].ch_12_3;
                             var ch_12_4 = data[i].ch_12_4;
+                            var ch_12_5 = data[i].ch_12_5;
+                            var ch_12_6 = data[i].ch_12_6;
+                            var ch_12_7 = data[i].ch_12_7;
                             var f_1 = data[i].f_1;
                             var f_2 = data[i].f_2;
                             var f_3_1 = data[i].f_3_1;
@@ -1044,6 +1065,9 @@ $(document).ready(function() {
                             var f_12_2 = data[i].f_12_2;
                             var f_12_3 = data[i].f_12_3;
                             var f_12_4 = data[i].f_12_4;
+                            var f_12_5 = data[i].f_12_5;
+                            var f_12_6 = data[i].f_12_6;
+                            var f_12_7 = data[i].f_12_7;
                             $('#chklist_id').val(ch_id);
                             //isNew = false;
                             // console.log('is new?' + isNew);
@@ -1208,6 +1232,27 @@ $(document).ready(function() {
                                 $('#ch_12_4').prop('checked', false);
                                 $('#ch_12_4').val(0).trigger("change");
                             }
+                            if (ch_12_5 == 1) {
+                                $('#ch_12_5').prop('checked', true);
+                                $('#ch_12_5').val(1).trigger("change");
+                            } else {
+                                $('#ch_12_5').prop('checked', false);
+                                $('#ch_12_5').val(0).trigger("change");
+                            }
+                            if (ch_12_6 == 1) {
+                                $('#ch_12_6').prop('checked', true);
+                                $('#ch_12_6').val(1).trigger("change");
+                            } else {
+                                $('#ch_12_6').prop('checked', false);
+                                $('#ch_12_6').val(0).trigger("change");
+                            }
+                            if (ch_12_7 == 1) {
+                                $('#ch_12_7').prop('checked', true);
+                                $('#ch_12_7').val(1).trigger("change");
+                            } else {
+                                $('#ch_12_7').prop('checked', false);
+                                $('#ch_12_7').val(0).trigger("change");
+                            }
                             if (f_1 == "") {
                                 $('#file_attachother1').val('');
                                 $("#msg1").html('');
@@ -1260,6 +1305,12 @@ $(document).ready(function() {
                             $("#msg12_3").html("<font id='doc_image_name1' color='green'>" + f_12_3 + "</font>");
                             $('#file_attachother12_4').val(f_12_4);
                             $("#msg12_4").html("<font id='doc_image_name1' color='green'>" + f_12_4 + "</font>");
+                            $('#file_attachother12_5').val(f_12_5);
+                            $("#msg12_5").html("<font id='doc_image_name1' color='green'>" + f_12_5 + "</font>");
+                            $('#file_attachother12_6').val(f_12_6);
+                            $("#msg12_6").html("<font id='doc_image_name1' color='green'>" + f_12_6 + "</font>");
+                            $('#file_attachother12_7').val(f_12_7);
+                            $("#msg12_7").html("<font id='doc_image_name1' color='green'>" + f_12_7 + "</font>");
                             if (f_1 != '') {
                                 download1 = '<i class="fa fa-download" aria-hidden="true"></i>';
                             } else {
@@ -1375,6 +1426,21 @@ $(document).ready(function() {
                             } else {
                                 download12_4 = '';
                             }
+                            if (f_12_5 != '') {
+                                download12_5 = '<i class="fa fa-download" aria-hidden="true"></i>';
+                            } else {
+                                download12_5 = '';
+                            }
+                            if (f_12_6 != '') {
+                                download12_6 = '<i class="fa fa-download" aria-hidden="true"></i>';
+                            } else {
+                                download12_6 = '';
+                            }
+                            if (f_12_7 != '') {
+                                download12_7 = '<i class="fa fa-download" aria-hidden="true"></i>';
+                            } else {
+                                download12_7 = '';
+                            }
                             $("#down1").html('<a href=' + baseurl + 'Marrige/download/' + f_1 + '>' + download1 + '</a>');
                             $("#down2").html('<a href=' + baseurl + 'Marrige/download/' + f_2 + '>' + download2 + '</a>');
                             $("#down3_1").html('<a href=' + baseurl + 'Marrige/download/' + f_3_1 + '>' + download3_1 + '</a>');
@@ -1398,6 +1464,9 @@ $(document).ready(function() {
                             $("#down12_2").html('<a href=' + baseurl + 'Marrige/download/' + f_12_2 + '>' + download12_2 + '</a>');
                             $("#down12_3").html('<a href=' + baseurl + 'Marrige/download/' + f_12_3 + '>' + download12_3 + '</a>');
                             $("#down12_4").html('<a href=' + baseurl + 'Marrige/download/' + f_12_4 + '>' + download12_4 + '</a>');
+                            $("#down12_5").html('<a href=' + baseurl + 'Marrige/download/' + f_12_5 + '>' + download12_5 + '</a>');
+                            $("#down12_6").html('<a href=' + baseurl + 'Marrige/download/' + f_12_6 + '>' + download12_6 + '</a>');
+                            $("#down12_7").html('<a href=' + baseurl + 'Marrige/download/' + f_12_7 + '>' + download12_7 + '</a>');
                         }
                     }
                 });
@@ -1433,6 +1502,9 @@ $(document).ready(function() {
         var ch_12_2 = $('#ch_12_2').val();
         var ch_12_3 = $('#ch_12_3').val();
         var ch_12_4 = $('#ch_12_4').val();
+        var ch_12_5 = $('#ch_12_5').val();
+        var ch_12_6 = $('#ch_12_6').val();
+        var ch_12_7 = $('#ch_12_7').val();
         var f_1 = $('#file_attachother1').val();
         var f_2 = $('#file_attachother2').val();
         var f_3_1 = $('#file_attachother3_1').val();
@@ -1456,6 +1528,9 @@ $(document).ready(function() {
         var f_12_2 = $('#file_attachother12_2').val();
         var f_12_3 = $('#file_attachother12_3').val();
         var f_12_4 = $('#file_attachother12_4').val();
+        var f_12_5 = $('#file_attachother12_5').val();
+        var f_12_6 = $('#file_attachother12_6').val();
+        var f_12_7 = $('#file_attachother12_7').val();
         var id = $('#chklist_id').val();
         $.ajax({
             type: "POST",
@@ -1486,6 +1561,9 @@ $(document).ready(function() {
                 ch_12_2: ch_12_2,
                 ch_12_3: ch_12_3,
                 ch_12_4: ch_12_4,
+                ch_12_5: ch_12_5,
+                ch_12_6: ch_12_6,
+                ch_12_7: ch_12_7,
                 f_1: f_1,
                 f_2: f_2,
                 f_3_1: f_3_1,
@@ -1509,6 +1587,9 @@ $(document).ready(function() {
                 f_12_2: f_12_2,
                 f_12_3: f_12_3,
                 f_12_4: f_12_4,
+                f_12_5: f_12_5,
+                f_12_6: f_12_6,
+                f_12_7: f_12_7,
                 table_name: table_name,
             },
             dataType: "JSON",
@@ -2933,6 +3014,36 @@ $(document).ready(function() {
             $("#file_attachother12_4").val('');
         }
     });
+    $('#ch_12_5').change(function() {
+        if ($(this).is(":checked")) {
+            $("#ch_12_5").val(1);
+            $("#attachment12_5").show();
+        } else {
+            $("#ch_12_5").val(0);
+            $("#attachment12_5").hide();
+            $("#file_attachother12_5").val('');
+        }
+    });
+    $('#ch_12_6').change(function() {
+        if ($(this).is(":checked")) {
+            $("#ch_12_6").val(1);
+            $("#attachment12_6").show();
+        } else {
+            $("#ch_12_6").val(0);
+            $("#attachment12_6").hide();
+            $("#file_attachother12_6").val('');
+        }
+    });
+    $('#ch_12_7').change(function() {
+        if ($(this).is(":checked")) {
+            $("#ch_12_7").val(1);
+            $("#attachment12_7").show();
+        } else {
+            $("#ch_12_7").val(0);
+            $("#attachment12_7").hide();
+            $("#file_attachother12_7").val('');
+        }
+    });
     //-------------------------------check box change events end----------------------------------------------------
     //------------------------------ajax file upload start----------------------------------------------------------
     $('#attachment1').ajaxfileupload({
@@ -3414,6 +3525,63 @@ $(document).ready(function() {
             } else {
                 $("#file_attachother12_4").val(response);
                 $("#msg12_4").html("<font id='doc_image_name1' color='green'>" + response + "</font>");
+                /*$('#containerother_kyc1').empty();
+                 var url = getRootUrl();
+                 var img = $('<img />').addClass('img').attr({
+                     'id': 'myImage',
+                     'src': baseurl + 'assets/images/add_call_doc/' + response,
+                     'width': 50,
+                 }).appendTo('#containerother_kyc1');*/
+            }
+        }
+    });
+    $('#attachment12_5').ajaxfileupload({
+        'action': baseurl + 'Marrige/doc_image_upload12_5',
+        'onStart': function() { $("#msg12_5").html("<font color='red'><i class='fa fa-refresh fa-spin fa-3x fa-fw'></i>Please wait file is uploading.....</font>"); },
+        'onComplete': function(response) {
+            if (response == '') {
+                $("#msg12_5").html("<font color='red'>" + "Error in file upload" + "</font>");
+            } else {
+                $("#file_attachother12_5").val(response);
+                $("#msg12_5").html("<font id='doc_image_name1' color='green'>" + response + "</font>");
+                /*$('#containerother_kyc1').empty();
+                 var url = getRootUrl();
+                 var img = $('<img />').addClass('img').attr({
+                     'id': 'myImage',
+                     'src': baseurl + 'assets/images/add_call_doc/' + response,
+                     'width': 50,
+                 }).appendTo('#containerother_kyc1');*/
+            }
+        }
+    });
+    $('#attachment12_6').ajaxfileupload({
+        'action': baseurl + 'Marrige/doc_image_upload12_6',
+        'onStart': function() { $("#msg12_6").html("<font color='red'><i class='fa fa-refresh fa-spin fa-3x fa-fw'></i>Please wait file is uploading.....</font>"); },
+        'onComplete': function(response) {
+            if (response == '') {
+                $("#msg12_6").html("<font color='red'>" + "Error in file upload" + "</font>");
+            } else {
+                $("#file_attachother12_6").val(response);
+                $("#msg12_6").html("<font id='doc_image_name1' color='green'>" + response + "</font>");
+                /*$('#containerother_kyc1').empty();
+                 var url = getRootUrl();
+                 var img = $('<img />').addClass('img').attr({
+                     'id': 'myImage',
+                     'src': baseurl + 'assets/images/add_call_doc/' + response,
+                     'width': 50,
+                 }).appendTo('#containerother_kyc1');*/
+            }
+        }
+    });
+    $('#attachment12_7').ajaxfileupload({
+        'action': baseurl + 'Marrige/doc_image_upload12_7',
+        'onStart': function() { $("#msg12_7").html("<font color='red'><i class='fa fa-refresh fa-spin fa-3x fa-fw'></i>Please wait file is uploading.....</font>"); },
+        'onComplete': function(response) {
+            if (response == '') {
+                $("#msg12_7").html("<font color='red'>" + "Error in file upload" + "</font>");
+            } else {
+                $("#file_attachother12_7").val(response);
+                $("#msg12_7").html("<font id='doc_image_name1' color='green'>" + response + "</font>");
                 /*$('#containerother_kyc1').empty();
                  var url = getRootUrl();
                  var img = $('<img />').addClass('img').attr({

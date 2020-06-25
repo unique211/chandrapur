@@ -26,11 +26,14 @@ $(document).ready(function() {
                 console.log('data getbillno');
                 console.log(data);
                 var data = eval(data);
-                if (data[0].sequence_no == null) {
-                    receiptno = 0;
-                } else {
-                    receiptno = parseInt(data[0].sequence_no);
+                if (data.length > 0) {
+                    if (data[0].sequence_no == null || data[0].sequence_no == "") {
+                        receiptno = 0;
+                    } else {
+                        receiptno = parseInt(data[0].sequence_no);
+                    }
                 }
+
             },
             error: function() {}
         });
@@ -44,7 +47,7 @@ $(document).ready(function() {
         while (receiptno.length < 5) {
             receiptno = '0' + receiptno;
         }
-        console.log(receiptno);
+        //  console.log(receiptno);
         receiptno = receiptno + mid + year;
         console.log(receiptno);
         $('#receipt_no2').val(receiptno);
@@ -155,6 +158,7 @@ $(document).ready(function() {
         $('#rest_vouchar').hide();
         $('#print_vouchar').val('');
         $('#ref_voucher').val('');
+        getreceiptno();
     });
 
     $(document).on('click', '.edit_extra', function() {
