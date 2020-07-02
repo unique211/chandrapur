@@ -304,7 +304,7 @@ $(document).ready(function() {
 
 
                         } else {
-                            readonly2 = 'disabled';
+                            readonly2 = '';
                             if (data[i].is_rcpt == 0) {
                                 readonly = 'disabled';
                                 readonly1 = '';
