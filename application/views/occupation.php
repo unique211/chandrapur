@@ -288,13 +288,13 @@
 
 											<div class="col-sm-3">
 
-												<label>शेरा / Remark (if any)</label>
+												<label>मोबाइल नंबर*</label>
 
 											</div>
 
 											<div class="col-sm-3">
 
-												<textarea name="remarks2" id="remarks2" style="resize: none;" class="form-control input-sm placeholdesize" placeholder="शेरा / Remark" id="remark2" name="remark2"></textarea>
+											<input type="number" class="form-control input-sm placeholdesize" placeholder="मोबाइल नंबर" name="mobile" id="mobile" required>
 											</div>
 
 
@@ -316,6 +316,22 @@
 												<div id="image_photo" class=""></div>
 											</div>
 
+
+										</div>
+
+										<div class="form-group">
+
+
+											<div class="col-sm-3">
+
+												<label>शेरा / Remark (if any)</label>
+
+											</div>
+
+											<div class="col-sm-3">
+
+												<textarea name="remarks2" id="remarks2" style="resize: none;" class="form-control input-sm placeholdesize" placeholder="शेरा / Remark" id="remark2" name="remark2"></textarea>
+											</div>
 
 										</div>
 										<br><br><br>
@@ -1211,7 +1227,7 @@
 																				<tr>
 																					<td>
 																						<center><b style="font-size: 20px;">
-																						-:  मौका तपासणी अहवाल :-</b></center>
+																								-: मौका तपासणी अहवाल :-</b></center>
 																					</td>
 																				</tr>
 																			</tbody>
@@ -1226,40 +1242,40 @@
 													</table>
 												</center>
 												<hr>
-											
-												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;">
-												<tr>
-													<th style="width: 70%;"></th>
-													<th style="width: 30%;font-size:20px">दिनांक :- <span id="l_today1"></span></th>
-								
-												</tr>
-												</table>
-												
 
-												<p style="text-align: justify;font-size:20px"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;अहवाल याप्रमाणे आहे कि, चंद्रपूर शहर महानगरपालिका कार्यालयास  श्री/श्रीमती <u><span id="l_name"></span></u>  व्यवसायाचा पत्ता <u><span id="l_address"></span></u> यांचा व्यवसाय <u><span id="l_bussiness"></span></u> संबंधी बाजार परवाना मिळण्याबाबतचा अर्ज  दि. <u><span id="l_today2"></span></u>  तारखेला प्राप्त झाला आहे. तरी सदर व्यवसायाची मौका तपासणी करण्यास श्री. ………………………………. यांना आदेशित करण्यात येते .</b></p>
+												<table id="tbl_1" style="width:100%;padding-left:2%;padding-right:2%;">
+													<tr>
+														<th style="width: 70%;"></th>
+														<th style="width: 30%;font-size:16px">दिनांक :- <span id="l_today1"></span></th>
+
+													</tr>
+												</table>
+
+
+												<p style="text-align: justify;font-size:16px"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;अहवाल याप्रमाणे आहे कि, चंद्रपूर शहर महानगरपालिका कार्यालयास श्री/श्रीमती <u><span id="l_name"></span></u> व्यवसायाचा पत्ता <u><span id="l_address"></span></u> यांचा व्यवसाय <u><span id="l_bussiness"></span></u> संबंधी बाजार परवाना मिळण्याबाबतचा अर्ज दि. <u><span id="l_today2"></span></u> तारखेला प्राप्त झाला आहे. तरी सदर व्यवसायाची मौका तपासणी करण्यास श्री. ………………………………. यांना आदेशित करण्यात येते .</b></p>
 
 												<table style="width:100%;padding-left:2%;padding-right:2%;padding-top:20px;">
 													<tr>
-													<th style="width: 30%;font-size:20px">मा . प्रभाग अधिकारी</th>
-													<th style="width: 70%;"></th>
+														<th style="width: 30%;font-size:16px">मा . प्रभाग अधिकारी</th>
+														<th style="width: 70%;"></th>
 													</tr>
 												</table>
 												<table style="width:100%;padding-left:2%;padding-right:2%;padding-top:280px;">
 													<tr>
-													<th style="width: 30%;font-size:20px">मु . स्वच्छता निरीक्षक </th>
-													<th style="width: 70%;"></th>
+														<th style="width: 30%;font-size:16px">मु . स्वच्छता निरीक्षक </th>
+														<th style="width: 70%;"></th>
 													</tr>
 												</table>
 												<table style="width:100%;padding-left:2%;padding-right:2%;padding-top:60px;">
 													<tr>
-													<th style="width: 30%;font-size:20px">मा . प्रभाग अधिकारी</th>
-													<th style="width: 70%;"></th>
+														<th style="width: 30%;font-size:16px">मा . प्रभाग अधिकारी</th>
+														<th style="width: 70%;"></th>
 													</tr>
 												</table>
 												<table style="width:100%;padding-left:2%;padding-right:2%;padding-top:60px;">
 													<tr>
-													<th style="width: 30%;font-size:20px">मा . सहा . आयुक्त</th>
-													<th style="width: 70%;"></th>
+														<th style="width: 30%;font-size:16px">मा . सहा . आयुक्त</th>
+														<th style="width: 70%;"></th>
 													</tr>
 												</table>
 
@@ -1268,7 +1284,7 @@
 										<div class="btn-group pull-left">
 											<input type="hidden" id="letter_id" value="">
 											<a class="printPage2 btn btn-primary" href="#">Print</a>
-<button class="btn btn-success" type="button" id="letter_arrrove">Approve</button>
+											<button class="btn btn-success" type="button" id="letter_arrrove">Approve</button>
 										</div>
 									</form>
 								</div>
@@ -1311,7 +1327,7 @@
 			newWin.document.write(divToPrint.outerHTML);
 			newWin.print();
 			// window.open("");
-				newWin.close();
+			newWin.close();
 		});
 
 		$('a.printPage2').click(function() {
@@ -1320,7 +1336,7 @@
 			newWin.document.write(divToPrint.outerHTML);
 			newWin.print();
 			// window.open("");
-				newWin.close();
+			newWin.close();
 		});
 		var date = new Date();
 		date = date.toString('dd/MM/yyyy');

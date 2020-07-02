@@ -103,6 +103,7 @@ $(document).ready(function() {
         var from1 = $("#from").val();
         var to1 = $("#to").val();
         var remark2 = $("#remarks2").val();
+        var mobile = $("#mobile").val();
         var cus_photo = $("#file_attachother3").val();
 
 
@@ -153,6 +154,7 @@ $(document).ready(function() {
                 from: from,
                 to: to,
                 remark2: remark2,
+                mobile: mobile,
                 cus_photo: cus_photo,
                 date: date,
                 year2: year2,
@@ -583,6 +585,7 @@ $(document).ready(function() {
                 $("#from").val(form_date);
                 $("#to").val(to_date);
                 $("#remarks2").val(data[0].remark2);
+                $("#mobile").val(data[0].mobile);
                 $("#file_attachother3").val(data[0].cus_photo);
 
                 $("#msg3").html("<font id='doc_image_name1' color='green'>" + data[0].cus_photo + "</font>");

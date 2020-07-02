@@ -1,0 +1,1 @@
+ALTER TABLE `occuption_certificate` ADD `mobile` BIGINT NOT NULL AFTER `remark2`;
