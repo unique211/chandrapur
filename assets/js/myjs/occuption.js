@@ -1631,6 +1631,7 @@ $(document).ready(function() {
         $("#c_photo").html('');
         $("#c_business_name").html('');
         $("#c_business_address").html('');
+        $("#c_mobile").html('');
         $("#c_business_type").html('');
         $("#c_charge_type").html('');
         $("#c_charge").html('');
@@ -1675,6 +1676,7 @@ $(document).ready(function() {
                     $("#c_photo").html('<img src="' + baseurl + '/assets/images/occuption/photo/' + data[i].cus_photo + '" width="95px" height="125px">');
                     $("#c_business_name").html(data[i].business_name);
                     $("#c_business_address").html(data[i].business_address);
+                    $("#c_mobile").html(data[i].mobile);
                     $("#c_business_type").html(data[i].business_type_name);
                     $("#c_charge_type").html(data[i].charge_type);
                     $("#c_charge").html(data[i].charge);

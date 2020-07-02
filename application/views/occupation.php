@@ -905,8 +905,18 @@
 
 														</tr>
 														<tr>
-															<td colspan="2" rowspan="3" style="width:20%;margin-top: -1%;padding-left: 2%;">
+															<td colspan="2"  style="width:20%;margin-top: -1%;padding-left: 2%;">
 																व्यवसायाचा पत्ता : <span id="c_business_address"></span>
+															</td>
+
+															<td style="width:20%;margin-top: -1%;padding-right: 1%;">
+
+															</td>
+
+														</tr>
+														<tr>
+															<td colspan="2" rowspan="2" style="width:20%;margin-top: -1%;padding-left: 2%;">
+															मोबाइल नंबर : <span id="c_mobile"></span>
 															</td>
 
 															<td style="width:20%;margin-top: -1%;padding-right: 1%;">
