@@ -173,6 +173,14 @@ class CashCounter_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	function getFiscalYear($timestamp)
+	{
+		$year = (int) date('Y', $timestamp);
+		$fiscalYearEndDate = strtotime('31 March ' . $year);
+		if ($timestamp < $fiscalYearEndDate) $year--;
+		return $year;
+	}
 	function get_receipt_id($date, $user_id)
 	{
 		$msr = 0;
@@ -213,14 +221,24 @@ class CashCounter_model extends CI_Model
 			);
 			$this->db->insert('db_logs', $logs);
 		} else {
+			$date1=strtotime($date);
+			$fiscalYear = $this->getFiscalYear($date1);
+			$lastyear=intval($fiscalYear)+1;
+
+			$start=$fiscalYear."-04-01";
+			$end=$lastyear."-03-31";
+
+
 			$this->db->select("max(sr) as msr");
 			$this->db->from('cash_counter_challan');
+			$this->db->where('c_date >=', $start);
+			$this->db->where('c_date <=', $end);
 			$query = $this->db->get();
 			foreach ($query->result() as $row) {
 				$msr = $row->msr;
 			}
-			if ($msr < 380)
-				$msr = 380;
+			if ($msr < 0)
+				$msr = 0;
 			$msr++;
 			$sr = $msr;
 			while (strlen($msr) < 5) {
@@ -259,7 +277,11 @@ class CashCounter_model extends CI_Model
 			);
 			$this->db->insert('db_logs', $logs);
 		}
-
 		return $challan_no;
+
+	
+		
+
+		
 	}
 }

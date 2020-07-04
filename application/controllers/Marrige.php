@@ -246,20 +246,32 @@ class Marrige extends CI_Controller
 		$id = $this->input->post('id');
 		$data1 = "";
 		$data = "";
-		$data = array(
-			'name' => $this->input->post('name'),
-			'mobile' => $this->input->post('mobile'),
-			'reason' => $this->input->post('reason'),
-			'no_of_copy' => $this->input->post('no_of_copy'),
-			'remark' => $this->input->post('remark'),
-			'payble_amt' => $this->input->post('payble_amt'),
-			'year' => $this->input->post('year'),
-			'receipt_no' => $this->input->post('receipt_no'),
-			'sequence_no' => $this->input->post('sequence_no'),
-		);
+	
 		if ($id == "") {
+			$data = array(
+				'name' => $this->input->post('name'),
+				'mobile' => $this->input->post('mobile'),
+				'reason' => $this->input->post('reason'),
+				'no_of_copy' => $this->input->post('no_of_copy'),
+				'remark' => $this->input->post('remark'),
+				'payble_amt' => $this->input->post('payble_amt'),
+				'year' => $this->input->post('year'),
+				'receipt_no' => $this->input->post('receipt_no'),
+				'sequence_no' => $this->input->post('sequence_no'),
+			);
 			$data1 = $this->m->insert_data($data, $table_name);
 		} else {
+			$data = array(
+				'name' => $this->input->post('name'),
+				'mobile' => $this->input->post('mobile'),
+				'reason' => $this->input->post('reason'),
+				'no_of_copy' => $this->input->post('no_of_copy'),
+				'remark' => $this->input->post('remark'),
+				'payble_amt' => $this->input->post('payble_amt'),
+			//	'year' => $this->input->post('year'),
+			//	'receipt_no' => $this->input->post('receipt_no'),
+			//	'sequence_no' => $this->input->post('sequence_no'),
+			);
 			$data1 = $this->m->updatedata($data, $table_name, $id);
 		}
 		echo json_encode($data1);
@@ -304,6 +316,9 @@ class Marrige extends CI_Controller
 				'ch_12_2' => $this->input->post('ch_12_2'),
 				'ch_12_3' => $this->input->post('ch_12_3'),
 				'ch_12_4' => $this->input->post('ch_12_4'),
+				'ch_12_5' => $this->input->post('ch_12_5'),
+				'ch_12_6' => $this->input->post('ch_12_6'),
+				'ch_12_7' => $this->input->post('ch_12_7'),
 				'f_1' => $this->input->post('f_1'),
 				'f_2' => $this->input->post('f_2'),
 				'f_3_1' => $this->input->post('f_3_1'),
@@ -327,6 +342,9 @@ class Marrige extends CI_Controller
 				'f_12_2' => $this->input->post('f_12_2'),
 				'f_12_3' => $this->input->post('f_12_3'),
 				'f_12_4' => $this->input->post('f_12_4'),
+				'f_12_5' => $this->input->post('f_12_5'),
+				'f_12_6' => $this->input->post('f_12_6'),
+				'f_12_7' => $this->input->post('f_12_7'),
 			);
 		}
 		if ($id == "") {
@@ -1201,6 +1219,102 @@ class Marrige extends CI_Controller
 				"max_size" => 30000,
 			));
 			if (!$this->upload->do_upload('attachment12_4')) {
+				$error = array('error' => $this->upload->display_errors());
+				echo json_encode($error);
+			}
+			$data = $this->upload->data();
+			$path = $data['file_name'];
+			echo json_encode($path);
+		} else {
+			echo "no file";
+		}
+	}
+	public function doc_image_upload12_5()
+	{
+		$this->load->helper("file");
+		$this->load->helper(array('form', 'url'));
+		$this->load->helper('directory');
+		$this->load->library("upload");
+		//  $id=$this->input->post('id');
+		$id = $this->session->userdata('merrige_id');
+		if (!file_exists('./assets/images/marrige_doc/' . $id)) {
+			//  mkdir('./assets/images/birth_doc/directory2', 0777, true);
+			mkdir('./assets/images/marrige_doc/' . $id, 0777, TRUE);
+		}
+		if ($_FILES['attachment12_5']['size'] > 0) {
+			$this->upload->initialize(array(
+				"upload_path" => './assets/images/marrige_doc/' . $id . '/',
+				"overwrite" => FALSE,
+				"max_filename" => 300,
+				"remove_spaces" => TRUE,
+				"allowed_types" => '*',
+				"max_size" => 30000,
+			));
+			if (!$this->upload->do_upload('attachment12_5')) {
+				$error = array('error' => $this->upload->display_errors());
+				echo json_encode($error);
+			}
+			$data = $this->upload->data();
+			$path = $data['file_name'];
+			echo json_encode($path);
+		} else {
+			echo "no file";
+		}
+	}
+	public function doc_image_upload12_6()
+	{
+		$this->load->helper("file");
+		$this->load->helper(array('form', 'url'));
+		$this->load->helper('directory');
+		$this->load->library("upload");
+		//  $id=$this->input->post('id');
+		$id = $this->session->userdata('merrige_id');
+		if (!file_exists('./assets/images/marrige_doc/' . $id)) {
+			//  mkdir('./assets/images/birth_doc/directory2', 0777, true);
+			mkdir('./assets/images/marrige_doc/' . $id, 0777, TRUE);
+		}
+		if ($_FILES['attachment12_6']['size'] > 0) {
+			$this->upload->initialize(array(
+				"upload_path" => './assets/images/marrige_doc/' . $id . '/',
+				"overwrite" => FALSE,
+				"max_filename" => 300,
+				"remove_spaces" => TRUE,
+				"allowed_types" => '*',
+				"max_size" => 30000,
+			));
+			if (!$this->upload->do_upload('attachment12_6')) {
+				$error = array('error' => $this->upload->display_errors());
+				echo json_encode($error);
+			}
+			$data = $this->upload->data();
+			$path = $data['file_name'];
+			echo json_encode($path);
+		} else {
+			echo "no file";
+		}
+	}
+	public function doc_image_upload12_7()
+	{
+		$this->load->helper("file");
+		$this->load->helper(array('form', 'url'));
+		$this->load->helper('directory');
+		$this->load->library("upload");
+		//  $id=$this->input->post('id');
+		$id = $this->session->userdata('merrige_id');
+		if (!file_exists('./assets/images/marrige_doc/' . $id)) {
+			//  mkdir('./assets/images/birth_doc/directory2', 0777, true);
+			mkdir('./assets/images/marrige_doc/' . $id, 0777, TRUE);
+		}
+		if ($_FILES['attachment12_7']['size'] > 0) {
+			$this->upload->initialize(array(
+				"upload_path" => './assets/images/marrige_doc/' . $id . '/',
+				"overwrite" => FALSE,
+				"max_filename" => 300,
+				"remove_spaces" => TRUE,
+				"allowed_types" => '*',
+				"max_size" => 30000,
+			));
+			if (!$this->upload->do_upload('attachment12_7')) {
 				$error = array('error' => $this->upload->display_errors());
 				echo json_encode($error);
 			}

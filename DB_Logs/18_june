@@ -1,0 +1,12 @@
+ALTER TABLE `occuption_certificate` ADD `business_name` VARCHAR(50) NOT NULL AFTER `language`, ADD `business_address` VARCHAR(50) NOT NULL AFTER `business_name`, ADD `business_type` INT NOT NULL AFTER `business_address`, ADD `dimension` VARCHAR(50) NOT NULL AFTER `business_type`, ADD `charge_type` VARCHAR(50) NOT NULL AFTER `dimension`, ADD `charge` DECIMAL(10,2) NOT NULL AFTER `charge_type`, ADD `from_date` DATE NOT NULL AFTER `charge`, ADD `to_date` DATE NOT NULL AFTER `from_date`, ADD `remark2` VARCHAR(500) NOT NULL AFTER `to_date`, ADD `cus_photo` VARCHAR(250) NOT NULL AFTER `remark2`;
+
+CREATE TABLE `business_type_master` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `business_type` varchar(50) NOT NULL,
+ `amount` decimal(10,2) NOT NULL,
+ `user_id` varchar(50) NOT NULL,
+ `status` tinyint(1) NOT NULL DEFAULT 1,
+ `add_date` datetime NOT NULL,
+ `modify_date` datetime NOT NULL,
+ PRIMARY KEY (`id`)
+)

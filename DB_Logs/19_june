@@ -1,0 +1,3 @@
+ALTER TABLE `occuption_receipt` ADD `business_type` VARCHAR(50) NOT NULL AFTER `total`, ADD `penalty` DECIMAL(10,2) NOT NULL AFTER `business_type`, ADD `from_date` DATE NOT NULL AFTER `penalty`, ADD `to_date` DATE NOT NULL AFTER `from_date`;
+
+ALTER TABLE `occuption_certificate` ADD `is_rcpt` TINYINT(1) NOT NULL DEFAULT '0' AFTER `cus_photo`;

@@ -284,7 +284,7 @@ function getIndianCurrency($number)
 
 			<tr style="font-size:13px;">
 				<td style="border-left:1px solid #000;"></td>
-				<td>नाव :- Arti Joseph</td>
+				<td>नाव :- <?php echo $this->session->username; ?></td>
 				<td>विभाग</td>
 				<td colspan=2 style="border-right:1px solid #000;">प्राधिकृत अधिकान्याची स्वाक्षरी</td>
 			</tr>
